@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/screenutil.dart';
 import 'package:client/core/utils/colors.dart';
-import 'package:client/core/utils/typography.dart';
 
 class OptionsCapsuleTile extends StatelessWidget {
   final String id;
@@ -32,19 +30,19 @@ class OptionsCapsuleTile extends StatelessWidget {
           child: Container(
             alignment: Alignment.center,
             padding: EdgeInsets.symmetric(
-                horizontal: ScreenUtil().setSp(40), vertical: 0),
+                horizontal: 8, vertical: 0),
             margin: EdgeInsets.only(left: 8),
             decoration: BoxDecoration(
               color: isSelected ? Colors.blue : Colors.transparent,
-              borderRadius: BorderRadius.circular(30),
+              borderRadius: BorderRadius.circular(10),
               border: Border.all(
                 width: 1.0,
-                color: isSelected ? Colors.blue : lightBlackBorderColor,
+                color: isSelected ? Colors.blue : Colors.white.withOpacity(0.2),
               ),
             ),
             child: Text(
               title,
-              style: bodyText2.copyWith(
+              style: Theme.of(context).textTheme.bodyText2.copyWith(
                   color: isSelected ? Colors.white : titleColor),
             ),
           ),

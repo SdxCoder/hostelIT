@@ -12,27 +12,29 @@ class AuthViewModel extends BaseViewModel {
   String role = Role.user;
   List<String> foodCategories = [];
 
-  void selectRole(String value){
+  void selectRole(String value) {
     role = value;
     print(role);
     notifyListeners();
   }
 
-  void addFoodCatergories(String value){
-    foodCategories.add(value);
-    foodCategories = foodCategories.toSet().toList();
-    print(role);
-    notifyListeners();
+  void addFoodCatergories(String value) {
+    if (value.isNotEmpty) {
+      foodCategories.add(value.toUpperCase());
+      foodCategories = foodCategories.toSet().toList();
+      print(value.isEmpty);
+      notifyListeners();
+    }
   }
 
-  Future signUpWithEmailAndPassword(
-    {String email,
+  Future signUpWithEmailAndPassword({
+    String email,
     String password,
     String firstName,
     String lastName,
     String phoneNo,
-    DateTime dob,}
-  ) async {
+    DateTime dob,
+  }) async {
     setBusy(true);
     var result = await _authService.signUpWithEmailPassword(
         email: email,
@@ -57,39 +59,37 @@ class AuthViewModel extends BaseViewModel {
     if (result is String) {
       await showDialogBox(title: "Error", description: result);
     } else {
-       Modular.to.pushNamed(Routes.home);
+      Modular.to.pushNamed(Routes.home);
       //_rbacService.getRoleBasedAccess();
     }
   }
 
   Future signInWithGoogle() async {
-
     var result = await _authService.signInWithGoogle();
 
     if (result is String) {
       await showDialogBox(title: "Error", description: result);
     } else {
-       Modular.to.pushNamed(Routes.home);
+      Modular.to.pushNamed(Routes.home);
       //_rbacService.getRoleBasedAccess();
     }
   }
 
   Future signInWithFacebook() async {
-
     var result = await _authService.signInWithFaceBook();
-  
+
     if (result is String) {
       await showDialogBox(title: "Error", description: result);
     } else {
-       Modular.to.pushNamed(Routes.home);
+      Modular.to.pushNamed(Routes.home);
       //_rbacService.getRoleBasedAccess();
     }
   }
 
   Future sendPasswordResetEmail(String email) async {
-   // setBusy(true);
+    // setBusy(true);
     var result = await _authService.sendPasswordResetEmail(email);
-   // setBusy(false);
+    // setBusy(false);
     if (result is String) {
       await showDialogBox(title: "Error", description: result);
     } else {
@@ -97,5 +97,10 @@ class AuthViewModel extends BaseViewModel {
           title: "Success",
           description: "Password reset link sent to \nEmail: $email");
     }
+  }
+
+  void removeFoodCategory(String element) {
+    foodCategories.remove(element);
+    notifyListeners();
   }
 }

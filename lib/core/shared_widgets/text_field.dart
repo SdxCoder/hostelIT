@@ -13,6 +13,7 @@ class TextFieldCustom extends StatefulWidget {
   final Function onTapPrefixIcon;
   final IconData suffixIconData;
   final IconData prefixIconData;
+  final FocusNode focusNode; 
 
   const TextFieldCustom(
       {Key key,
@@ -22,7 +23,7 @@ class TextFieldCustom extends StatefulWidget {
       this.onFieldSubmit,
       this.hintText,
       this.onTapSuffixIcon,
-       this.suffixIconData, this.prefixIconData, this.onTapPrefixIcon})
+       this.suffixIconData, this.prefixIconData, this.onTapPrefixIcon, this.focusNode})
       : super(key: key);
 
   @override
@@ -38,6 +39,7 @@ class _TextFieldState extends State<TextFieldCustom> {
         borderRadius: BorderRadius.circular(10),
       ),
       child: TextFormField(
+        focusNode: widget.focusNode,
         validator: widget.validator,
         cursorWidth: 1,
         cursorColor: Colors.white,

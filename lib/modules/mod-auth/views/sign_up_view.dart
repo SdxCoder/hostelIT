@@ -8,6 +8,7 @@ import '../../../core/core.dart';
 import 'auth_view.dart';
 
 import '../view_model/auth_view_model.dart';
+import 'map.dart';
 
 class CustomIcons {
   static const IconData twitter = IconData(0xe900, fontFamily: "CustomIcons");
@@ -83,7 +84,6 @@ class _SignUpViewState extends State<SignUpView> {
         builder: (context, AuthViewModel model, child) => AuthView(
           model: model,
           formCard: _signUpForm(model, media),
-        
         ),
       ),
     );
@@ -91,113 +91,145 @@ class _SignUpViewState extends State<SignUpView> {
 
   Widget _signUpForm(AuthViewModel model, media) {
     return SingleChildScrollView(
-          child: Form(
+      child: Form(
           key: _formKey,
           child: Column(
             children: [
               SizedBox(
                 height: 50,
               ),
-              (model.role != Role.user) ? Offstage() : CircleAvatar(
-                backgroundColor: Colors.white.withOpacity(0.2),
-                radius: 70,
-                child: Stack(
-                  children: [
-                    CircleAvatar(
+              (model.role != Role.user)
+                  ? Offstage()
+                  : CircleAvatar(
+                      backgroundColor: Colors.white.withOpacity(0.2),
                       radius: 70,
-                      backgroundColor: Colors.white.withOpacity(0),
+                      child: Stack(
+                        children: [
+                          CircleAvatar(
+                            radius: 70,
+                            backgroundColor: Colors.white.withOpacity(0),
+                          ),
+                          Center(
+                              child: Icon(
+                            Icons.person,
+                            color: Colors.white,
+                            size: 50,
+                          )),
+                          Positioned(
+                              bottom: 4,
+                              right: 8,
+                              child: GestureDetector(
+                                  onTap: () {
+                                    print("upload");
+                                  },
+                                  child: Icon(
+                                    Icons.photo_camera,
+                                    size: 30,
+                                    color: Colors.white,
+                                  )))
+                        ],
+                      ),
                     ),
-                    Center(
-                        child: Icon(
-                      Icons.person,
-                      color: Colors.white,
-                      size: 50,
-                    )),
-                    Positioned(
-                        bottom: 4,
-                        right: 8,
-                        child: GestureDetector(
-                            onTap: () {
-                              print("upload");
-                            },
-                            child: Icon(
-                              Icons.photo_camera,
-                              size: 30,
-                              color: Colors.white,
-                            )))
-                  ],
-                ),
-              ),
               SizedBox(
                 height: 50,
               ),
-              (model.role != Role.user) ? Offstage() : SizedBox(
-                width: media.screenSize.width * 0.7,
-                child: TextFieldCustom(
-                  hintText: "Nombre",
-                  prefixIconData: Icons.person_outline,
-                ),
-              ),
-              (model.role == Role.user) ? Offstage() : SizedBox(
-                width: media.screenSize.width * 0.7,
-                child: TextFieldCustom(
-                  hintText: "Nombre del Restaurante",
-                  prefixIconData: Icons.restaurant,
-                ),
-              ),
+              (model.role != Role.user)
+                  ? Offstage()
+                  : SizedBox(
+                      width: media.screenSize.width * 0.7,
+                      child: TextFieldCustom(
+                        hintText: "Nombre",
+                        prefixIconData: Icons.person_outline,
+                      ),
+                    ),
+              (model.role == Role.user)
+                  ? Offstage()
+                  : SizedBox(
+                      width: media.screenSize.width * 0.7,
+                      child: TextFieldCustom(
+                        hintText: "Nombre del Restaurante",
+                        prefixIconData: Icons.restaurant,
+                      ),
+                    ),
               SizedBox(
                 height: 16,
               ),
-              (model.role == Role.user) ? Offstage() : SizedBox(
-                width: media.screenSize.width * 0.7,
-                child: TextFieldCustom(
-                  hintText: "Branch del Restaurante",
-                  prefixIconData: Icons.location_city,
-                ),
-              ),
-              (model.role == Role.user) ? Offstage() : SizedBox(
-                height: 16,
-              ),
-               (model.role == Role.user) ? Offstage() : SizedBox(
-                width: media.screenSize.width * 0.7,
-                child: TextFieldCustom(
-                  controller: foodController,
-                  hintText: "Food Catgories",
-                  prefixIconData: Icons.fastfood,
-                  suffixIconData: Icons.add,
-                  onTapSuffixIcon: (){
-                    model.addFoodCatergories(foodController.text.trim());
-                  },
-                ),
-              ),
-              (model.foodCategories.isEmpty) ? Offstage() : 
-              Wrap(
-                children: [
-                  ...model.foodCategories.map<Widget>((element) { 
-                    return OptionsCapsuleTile(
-                      
-                      title: element);
-                  })
-                ],
-              ),
-              (model.role == Role.user) ? Offstage() : SizedBox(
-                height: 16,
-              ),
-              (model.role == Role.user) ? Offstage() : SizedBox(
-                width: media.screenSize.width * 0.7,
-                child: TextFieldCustom(
-                  hintText: "Choose Location",
-                  prefixIconData: Icons.my_location,
-                  suffixIconData: Icons.map,
-                  onTapSuffixIcon: (){
-                    
-                  },
-                ),
-              ),
-              (model.role == Role.user) ? Offstage() : SizedBox(
-                height: 16,
-              ),
-
+              (model.role == Role.user)
+                  ? Offstage()
+                  : SizedBox(
+                      width: media.screenSize.width * 0.7,
+                      child: TextFieldCustom(
+                        hintText: "Sucursal del Restaurante",
+                        prefixIconData: Icons.location_city,
+                      ),
+                    ),
+              (model.role == Role.user)
+                  ? Offstage()
+                  : SizedBox(
+                      height: 16,
+                    ),
+              (model.role == Role.user)
+                  ? Offstage()
+                  : SizedBox(
+                      width: media.screenSize.width * 0.7,
+                      child: TextFieldCustom(
+                        controller: foodController,
+                        hintText: "Categoría de comida",
+                        prefixIconData: Icons.fastfood,
+                        suffixIconData: Icons.add,
+                        onTapSuffixIcon: () {
+                          model.addFoodCatergories(foodController.text.trim());
+                        },
+                      ),
+                    ),
+               (model.foodCategories.isEmpty)
+                  ? Offstage() : SizedBox(
+                    height: 16,
+                  ),
+              (model.foodCategories.isEmpty)
+                  ? Offstage()
+                  : SizedBox(
+                      width: media.screenSize.width * 0.7,
+                      child: Align(
+                        alignment: Alignment.centerLeft,
+                        child: Wrap(
+                          children: [
+                            ...model.foodCategories.map<Widget>((element) {
+                              return OptionsCapsuleTile(
+                                  titleColor: Colors.white,
+                                  cancelIcon: Icon(Icons.cancel, color: Colors.white,),
+                                  onTapCancelIcon: () {
+                                    model.removeFoodCategory(element);
+                                  },
+                                  title: element);
+                            })
+                          ],
+                        ),
+                      ),
+                    ),
+              (model.role == Role.user)
+                  ? Offstage()
+                  : SizedBox(
+                      height: 16,
+                    ),
+              (model.role == Role.user)
+                  ? Offstage()
+                  : SizedBox(
+                      width: media.screenSize.width * 0.7,
+                      child: TextFieldCustom(
+                        hintText: "Elegir la ubicación",
+                        prefixIconData: Icons.my_location,
+                        suffixIconData: Icons.map,
+                        onTapSuffixIcon: () {
+                          Navigator.of(context).push(MaterialPageRoute(builder: (context) => MapView()));
+                        },
+                      ),
+                    ),
+              (model.role == Role.user)
+                  ? Offstage()
+                  : SizedBox(
+                      height: 16,
+                    ),
               SizedBox(
                 width: media.screenSize.width * 0.7,
                 child: TextFieldCustom(
@@ -241,24 +273,28 @@ class _SignUpViewState extends State<SignUpView> {
               SizedBox(
                 height: 50,
               ),
-               (model.role != Role.user) ? Offstage() :SizedBox(
-                width: media.screenSize.width * 0.7,
-                height: 48,
-                child: raisedButton(
-                    widget: Text(
-                      "Registrarse",
+              (model.role != Role.user)
+                  ? Offstage()
+                  : SizedBox(
+                      width: media.screenSize.width * 0.7,
+                      height: 48,
+                      child: raisedButton(
+                          widget: Text(
+                            "Registrarse",
+                          ),
+                          onPressed: () {}),
                     ),
-                    onPressed: () {}),
-              ),
-               (model.role == Role.user) ? Offstage() : SizedBox(
-                width: media.screenSize.width * 0.7,
-                height: 48,
-                child: raisedButton(
-                    widget: Text(
-                      "Continuar Registro",
+              (model.role == Role.user)
+                  ? Offstage()
+                  : SizedBox(
+                      width: media.screenSize.width * 0.7,
+                      height: 48,
+                      child: raisedButton(
+                          widget: Text(
+                            "Continuar Registro",
+                          ),
+                          onPressed: () {}),
                     ),
-                    onPressed: () {}),
-              ),
               SizedBox(
                 height: 50,
               ),

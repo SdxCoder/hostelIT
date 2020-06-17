@@ -11,6 +11,7 @@ export './extensions/extension.dart';
 
 export './models/current_user.dart';
 export './models/user.dart';
+export './models/osm_location.dart';
 
 
 
@@ -41,6 +42,7 @@ export './shared_widgets/drop_down_field.dart';
 export './shared_widgets/text_field.dart';
 export './shared_widgets/info_section.dart';
 export './shared_widgets/empty_list_placeholder.dart';
+export './shared_widgets/search_location_widget.dart';
 
 // utils
 export './utils/colors.dart';

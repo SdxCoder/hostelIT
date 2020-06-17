@@ -14,6 +14,10 @@ class TextFieldCustom extends StatefulWidget {
   final IconData suffixIconData;
   final IconData prefixIconData;
   final FocusNode focusNode; 
+  final Color backgroundColor;
+  final Color hintTextColor;
+  final Color cursorColor;
+  final Color textColor;
 
   const TextFieldCustom(
       {Key key,
@@ -23,7 +27,7 @@ class TextFieldCustom extends StatefulWidget {
       this.onFieldSubmit,
       this.hintText,
       this.onTapSuffixIcon,
-       this.suffixIconData, this.prefixIconData, this.onTapPrefixIcon, this.focusNode})
+       this.suffixIconData, this.prefixIconData, this.onTapPrefixIcon, this.focusNode, this.backgroundColor, this.hintTextColor, this.cursorColor, this.textColor})
       : super(key: key);
 
   @override
@@ -35,24 +39,24 @@ class _TextFieldState extends State<TextFieldCustom> {
     return Container(
       height: 48,
       decoration: BoxDecoration(
-        color: Colors.white.withOpacity(0.2),
+        color: widget.backgroundColor ?? Colors.white.withOpacity(0.2),
         borderRadius: BorderRadius.circular(10),
       ),
       child: TextFormField(
         focusNode: widget.focusNode,
         validator: widget.validator,
         cursorWidth: 1,
-        cursorColor: Colors.white,
+        cursorColor: widget.cursorColor ?? Colors.white,
         autofocus: false,
         controller: widget.controller,
-        style: Theme.of(context).textTheme.bodyText2.copyWith(decoration: TextDecoration.none, color: Colors.white),
+        style: Theme.of(context).textTheme.bodyText2.copyWith(decoration: TextDecoration.none, color: widget.textColor ?? Colors.white),
         onFieldSubmitted: widget.onFieldSubmit,
         decoration: InputDecoration(
             
             labelText: widget.title,
             labelStyle: Theme.of(context).textTheme.bodyText2.copyWith(color: lightBlackColor),
             hintText: widget.hintText,
-            hintStyle: Theme.of(context).textTheme.bodyText2.copyWith(fontWeight: FontWeight.w300, color: Colors.white),
+            hintStyle: Theme.of(context).textTheme.bodyText2.copyWith(fontWeight: FontWeight.w300, color: widget.hintTextColor ?? Colors.white),
             contentPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 2),
             suffixIcon: widget.suffixIconData == null ? null : GestureDetector(
               onTap: widget.onTapSuffixIcon,

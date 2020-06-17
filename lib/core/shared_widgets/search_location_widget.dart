@@ -1,6 +1,3 @@
-
-
-
 import 'dart:convert';
 
 import 'package:client/core/core.dart';
@@ -30,7 +27,7 @@ class SearchLocationWidget extends StatefulWidget {
 }
 
 class _SearchLocationWidgetState extends State<SearchLocationWidget> {
-  // actual location for the marker
+  // actual location for the marker // fetch current location
   LatLng _actualLocation = LatLng(52.5170365, 13.3888599);
 
   // to control the map e.g. to move
@@ -62,38 +59,50 @@ class _SearchLocationWidgetState extends State<SearchLocationWidget> {
   Widget build(BuildContext context) {
     return LayoutBuilder(builder: (context, constraints) {
       return Column(children: <Widget>[
-        _getTextField(),
-        SizedBox(height: 8),
         Flexible(
-        //  height: 200,
-         // width: constraints.maxWidth,
-          child: Stack(
+                  child: Stack(
             children: <Widget>[
-              _getMap(),
+  
+               _getMap(),
+              Padding(
+                padding: const EdgeInsets.only(left: 16.0,right: 16, top: 32,),
+                child: _getTextField(),
+              ),
+              
               if (places != null && places.length > 0) _suggestionsList()
             ],
           ),
         ),
-       
       ]);
     });
   }
 
   Widget _getTextField() => TextFieldCustom(
-    title: 'Search Location',
-   focusNode: _textFieldFocusNode,
-      controller: _searchTextController,);
+        cursorColor: Colors.black,
+        hintTextColor: Colors.black,
+        backgroundColor: Colors.white,
+        textColor: Colors.black,
+        hintText: 'Search Location',
+        focusNode: _textFieldFocusNode,
+        controller: _searchTextController,
+      );
 
   /*
     suggestion list
    */
-  Widget _suggestionsList() => ListView.builder(
+  Widget _suggestionsList() => Container(
+    margin: EdgeInsets.only(top : 80),
+   
+      child: ListView.builder(
         itemCount: places.length,
         shrinkWrap: true,
-        padding: EdgeInsets.all(0),
+        padding: EdgeInsets.all(16),
+        
         itemBuilder: (context, index) => Container(
-          color: Theme.of(context).scaffoldBackgroundColor,
+        
+          color: Colors.white,
           child: ListTile(
+            
             title: Text(places[index].displayName),
             onTap: () {
               //avoid race conditions because of places
@@ -113,7 +122,8 @@ class _SearchLocationWidgetState extends State<SearchLocationWidget> {
             },
           ),
         ),
-      );
+      ),
+  );
 
   /*
     flutter map from open street view
@@ -121,9 +131,10 @@ class _SearchLocationWidgetState extends State<SearchLocationWidget> {
   Widget _getMap() => FlutterMap(
         mapController: _mapController,
         options: MapOptions(
-            center: _actualLocation, zoom: 12.0, 
-         //   plugins: [MapButtonsPlugin()]
-            ),
+          center: _actualLocation, zoom: 12.0,
+          interactive: false
+          //   plugins: [MapButtonsPlugin()]
+        ),
         layers: [
           TileLayerOptions(
             urlTemplate: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
@@ -144,8 +155,9 @@ class _SearchLocationWidgetState extends State<SearchLocationWidget> {
                 point: _actualLocation,
                 builder: (ctx) => new Container(
                   child: Icon(
-                    Icons.panorama_fish_eye,
-                    color: Colors.red,
+                    Icons.restaurant,
+                    color: Theme.of(context).primaryColor,
+                    size: 50,
                   ),
                 ),
               ),
@@ -156,8 +168,17 @@ class _SearchLocationWidgetState extends State<SearchLocationWidget> {
 
   Future _loadPlaces() async {
     lock.synchronized(() async {
-      if (_searchTextController.text == lastSearch ||
-          _searchTextController.text.isEmpty) return;
+      if (_searchTextController.text.isEmpty) {
+        setState(() {
+          this.places = null;
+        });
+        return;
+      }
+
+      if (_searchTextController.text == lastSearch) {
+        return;
+      }
+
       final url =
           "https://nominatim.openstreetmap.org/search?q=${_searchTextController.text.replaceAll(RegExp(' '), '+')}&format=json&addressdetails=1";
       final response = await http.get(url);

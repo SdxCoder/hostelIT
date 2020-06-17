@@ -41,6 +41,7 @@ class App extends StatelessWidget {
           },
           theme: ThemeData(
             fontFamily: "Poppins-Medium",
+            primaryColor: const Color(0xff3e3f68),
             buttonColor: const Color(0xff3e3f68),
             
             inputDecorationTheme: InputDecorationTheme(

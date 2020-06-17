@@ -7,6 +7,7 @@ Widget buildAppBar(
     List<Widget> actions = const [],
     bool centerTitle= true,
     Widget leading,
+    IconThemeData iconThemeData,
     Color backgroundColor,
     bool automaticallyImplyLeading = false,
     PreferredSizeWidget bottom
@@ -17,7 +18,7 @@ Widget buildAppBar(
     title: title,
     centerTitle: centerTitle,
     leading: leading,
-    iconTheme: IconThemeData(
+    iconTheme: iconThemeData  ?? IconThemeData(
       color: Colors.white,
      // size: 16
     ),

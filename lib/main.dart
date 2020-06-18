@@ -47,21 +47,24 @@ class App extends StatelessWidget {
             ),
             buttonColor: const Color(0xff3e3f68),
             accentTextTheme: TextTheme(
-               bodyText1: TextStyle(
+              bodyText1: TextStyle(
                 color: const Color(0xcc6e7faa),
+                fontSize: 14
               ),
               bodyText2: TextStyle(
                 color: const Color(0xcc6e7faa),
+                fontSize: 11,
+                fontWeight: FontWeight.normal
               ),
               subtitle1: TextStyle(
-                color: const Color(0xff3e3f68)
+                color: const Color(0xff3e3f68),
+                fontSize: 14
               ),
               subtitle2: TextStyle(
-                color: const Color(0xff3e3f68)
+                color: const Color(0xff3e3f68),
+                fontSize: 12
               ),
-              caption: TextStyle(
-                 color: const Color(0xcc6e7faa),
-              )
+              
 
             ),
             scaffoldBackgroundColor:const Color(0xfff5f5f5),

@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class DrawerCustom extends StatelessWidget {
   @override
@@ -10,7 +11,6 @@ class DrawerCustom extends StatelessWidget {
     
         children: [
           DrawerHeader(
-
             child: 
             Column(
               children: [
@@ -19,37 +19,50 @@ class DrawerCustom extends StatelessWidget {
                   radius: 30,
                 ),
                 SizedBox(height: 4,),
-                Text('El Celler de Can Roca',textAlign: TextAlign.center, style: Theme.of(context).accentTextTheme.subtitle2,),
-                 Text('Carrer de Can Sunyer, 48, 17007 Girona, Spain', textAlign: TextAlign.center, style: Theme.of(context).accentTextTheme.caption,)
+                Text('El Celler de Can Roca',textAlign: TextAlign.center, style: Theme.of(context).accentTextTheme.subtitle1,),
+                Text('Carrer de Can Sunyer, 48, 17007 Girona, Spain', textAlign: TextAlign.center, style: Theme.of(context).accentTextTheme.bodyText2,)
                 
               ],
             )
           ),
-          ListTile(
-            leading: Icon(Icons.fastfood, color: Theme.of(context).iconTheme.color,),
-            title: Text('Menu', style: Theme.of(context).accentTextTheme.subtitle2,),
+           ListTile(
+            leading: Icon(Icons.restaurant_menu, color: Theme.of(context).iconTheme.color,),
+            title: Text('Menu', style: Theme.of(context).accentTextTheme.subtitle1,),
             onTap: () {},
           ),
-          ListTile(
-            leading: Icon(Icons.pages, color: Theme.of(context).iconTheme.color),
-            title: Text('Orders'),
-            onTap: () {},
-          ),
-          ListTile(
+           ListTile(
             leading: Icon(Icons.local_offer, color: Theme.of(context).iconTheme.color),
-            title: Text('Offers'),
+            title: Text('Offers', style: Theme.of(context).accentTextTheme.subtitle1,),
+            onTap: () {},
+          ),
+         
+          ListTile(
+            leading: Icon(FontAwesomeIcons.table, color: Theme.of(context).iconTheme.color),
+            title: Text('Manage Tables', style: Theme.of(context).accentTextTheme.subtitle1,),
+            onTap: () {},
+          ),
+         
+           ListTile(
+            leading: Icon(FontAwesomeIcons.book , color: Theme.of(context).iconTheme.color),
+            title: Text('Reservations', style: Theme.of(context).accentTextTheme.subtitle1,),
+            onTap: () {},
+          ),
+           ListTile(
+            leading: Icon(FontAwesomeIcons.qrcode, color: Theme.of(context).iconTheme.color),
+            title: Text('QR Codes', style: Theme.of(context).accentTextTheme.subtitle1,),
             onTap: () {},
           ),
           
-          ListTile(
-            leading: Icon(Icons.person, color: Theme.of(context).iconTheme.color),
-            title: Text('Profile'),
-            onTap: () {},
-          ),
+         
           Spacer(),
            ListTile(
             leading: Icon(Icons.person, color: Theme.of(context).iconTheme.color),
-            title: Text('Logout'),
+            title: Text('Profile', style: Theme.of(context).accentTextTheme.subtitle1,),
+            onTap: () {},
+          ),
+           ListTile(
+            leading: Icon(FontAwesomeIcons.signOutAlt, color: Theme.of(context).iconTheme.color),
+            title: Text('Logout', style: Theme.of(context).accentTextTheme.subtitle1,),
             onTap: () {
               FirebaseAuth.instance.signOut();
             },

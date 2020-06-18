@@ -17,7 +17,7 @@ Widget empltyList({String text, String asset}) {
               )),
           Text(
             text ?? "No Bookings",
-            style: bodyText1.copyWith(fontWeight: FontWeight.bold),
+          //  style: Theme.of(context).accentTextTheme.bodyText1.copyWith(fontWeight: FontWeight.bold),
           )
         ],
       ),

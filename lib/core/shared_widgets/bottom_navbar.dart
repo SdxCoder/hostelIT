@@ -12,15 +12,28 @@ class BottomNavBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: Platform.isAndroid ? kBottomNavigationBarHeight : 77,
-      child: BottomNavigationBar(
-        backgroundColor: Colors.white,
-        elevation: 0,
-        currentIndex: currentIndex,
-        iconSize: 16,
-        selectedItemColor: Colors.blue,
-        onTap: onTap,
-        items: navItems
+      height: 
+      //Platform.isAndroid ? 
+      kBottomNavigationBarHeight ,
+      //: 77,
+      child: Material(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+            topLeft : Radius.circular(25),
+            topRight : Radius.circular(25),
+          )
+        ),
+        color: Colors.white,
+              child: BottomNavigationBar(
+          
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          currentIndex: currentIndex,
+          iconSize: 16,
+          selectedItemColor: Theme.of(context).primaryColor,
+          onTap: onTap,
+          items: navItems
+        ),
       ),
     );
   }

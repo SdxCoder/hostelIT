@@ -47,7 +47,8 @@ class AuthViewModel extends BaseViewModel {
     if (result is String) {
       await showDialogBox(title: "Error", description: result);
     } else {
-      Modular.to.pushNamed(Routes.home);
+       //_rbacService.getRoleBasedAccess();
+     // Modular.to.pushNamed(Routes.home);
     }
   }
 
@@ -59,7 +60,7 @@ class AuthViewModel extends BaseViewModel {
     if (result is String) {
       await showDialogBox(title: "Error", description: result);
     } else {
-      Modular.to.pushNamed(Routes.home);
+      // Modular.to.pushNamed(Routes.home);
       //_rbacService.getRoleBasedAccess();
     }
   }
@@ -70,7 +71,7 @@ class AuthViewModel extends BaseViewModel {
     if (result is String) {
       await showDialogBox(title: "Error", description: result);
     } else {
-      Modular.to.pushNamed(Routes.home);
+      //Modular.to.pushNamed(Routes.home);
       //_rbacService.getRoleBasedAccess();
     }
   }
@@ -81,7 +82,7 @@ class AuthViewModel extends BaseViewModel {
     if (result is String) {
       await showDialogBox(title: "Error", description: result);
     } else {
-      Modular.to.pushNamed(Routes.home);
+     // Modular.to.pushNamed(Routes.home);
       //_rbacService.getRoleBasedAccess();
     }
   }

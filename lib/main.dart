@@ -42,15 +42,29 @@ class App extends StatelessWidget {
           theme: ThemeData(
             fontFamily: "Poppins-Medium",
             primaryColor: const Color(0xff3e3f68),
-            buttonColor: const Color(0xff3e3f68),
-            
-            inputDecorationTheme: InputDecorationTheme(
-              labelStyle: TextStyle(
-                color: Color(0xFF838383),
-                fontWeight: FontWeight.w600,
-              ),
-              contentPadding: EdgeInsets.all(0.0),
+            iconTheme: IconThemeData(
+              color: const Color(0xff3e3f68),
             ),
+            buttonColor: const Color(0xff3e3f68),
+            accentTextTheme: TextTheme(
+               bodyText1: TextStyle(
+                color: const Color(0xcc6e7faa),
+              ),
+              bodyText2: TextStyle(
+                color: const Color(0xcc6e7faa),
+              ),
+              subtitle1: TextStyle(
+                color: const Color(0xff3e3f68)
+              ),
+              subtitle2: TextStyle(
+                color: const Color(0xff3e3f68)
+              ),
+              caption: TextStyle(
+                 color: const Color(0xcc6e7faa),
+              )
+
+            ),
+            scaffoldBackgroundColor:const Color(0xfff5f5f5),
           ),
           debugShowCheckedModeBanner: false,
           initialRoute: Modular.initialRoute,

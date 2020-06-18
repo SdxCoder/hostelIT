@@ -11,7 +11,7 @@ class RBACService{
 
     if (user.role == Role.admin) {
        print("admin logged in");
-      Modular.to.pushReplacementNamed(Routes.home);
+      Modular.to.pushReplacementNamed(Routes.adminHome);
     } else {
       print("user logged in");
      // Modular.to.pushReplacementNamed(Routes.userHome);

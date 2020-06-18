@@ -43,7 +43,7 @@ export './shared_widgets/text_field.dart';
 export './shared_widgets/info_section.dart';
 export './shared_widgets/empty_list_placeholder.dart';
 export './shared_widgets/search_location_widget.dart';
-
+export './shared_widgets/drawer.dart';
 // utils
 export './utils/colors.dart';
 export './utils/spacing.dart';

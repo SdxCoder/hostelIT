@@ -4,6 +4,7 @@ import 'package:stacked/stacked.dart';
 
 class SplashViewModel extends BaseViewModel {
   final _authService = Modular.get<AuthService>();
+  final _rbacService = Modular.get<RBACService>();
 
   Future handleStartUpLogic() async {
     setBusy(true);
@@ -12,9 +13,10 @@ class SplashViewModel extends BaseViewModel {
     await Future.delayed(Duration(seconds: 2));
     setBusy(false);
     if (loggedIn) {
-      Modular.to.pushReplacementNamed(Routes.login);
+      //_rbacService.getRoleBasedAccess();
+      Modular.to.pushReplacementNamed(Routes.adminHome);
     } else {
-      Modular.to.pushReplacementNamed(Routes.login);
+      Modular.to.pushReplacementNamed(Routes.adminHome);
     }
   }
 

@@ -60,15 +60,32 @@ class _SearchLocationWidgetState extends State<SearchLocationWidget> {
     return LayoutBuilder(builder: (context, constraints) {
       return Column(children: <Widget>[
         Flexible(
-                  child: Stack(
+          child: Stack(
             children: <Widget>[
-  
-               _getMap(),
+              
+              _getMap(),
+               SizedBox(
+                 height: kBottomNavigationBarHeight,
+                                child: buildAppBar(
+                  backgroundColor: Colors.white,
+                  centerTitle: true,
+                  iconThemeData:
+                      IconThemeData(color: Theme.of(context).primaryColor),
+                  title: Image.asset(
+                    'assets/images/logo_black.png',
+                    width: 100,
+                  ),
+                  automaticallyImplyLeading: true,
+              ),
+               ),
               Padding(
-                padding: const EdgeInsets.only(left: 16.0,right: 16, top: 32,),
+                padding: const EdgeInsets.only(
+                  left: 16.0,
+                  right: 16,
+                  top: 32,
+                ),
                 child: _getTextField(),
               ),
-              
               if (places != null && places.length > 0) _suggestionsList()
             ],
           ),
@@ -77,64 +94,62 @@ class _SearchLocationWidgetState extends State<SearchLocationWidget> {
     });
   }
 
-  Widget _getTextField() => TextFieldCustom(
-        cursorColor: Colors.black,
-        hintTextColor: Colors.black,
-        backgroundColor: Colors.white,
-        textColor: Colors.black,
-        hintText: 'Search Location',
-        focusNode: _textFieldFocusNode,
-        controller: _searchTextController,
-      );
+  Widget _getTextField() => Container(
+    margin: EdgeInsets.only(top: kBottomNavigationBarHeight),
+    child: TextFieldCustom(
+          cursorColor: Colors.black,
+          hintTextColor: Colors.black,
+          backgroundColor: Colors.white,
+          textColor: Colors.black,
+          hintText: 'Search Location',
+          focusNode: _textFieldFocusNode,
+          controller: _searchTextController,
+        ),
+  );
 
   /*
     suggestion list
    */
   Widget _suggestionsList() => Container(
-    margin: EdgeInsets.only(top : 80),
-   
-      child: ListView.builder(
-        itemCount: places.length,
-        shrinkWrap: true,
-        padding: EdgeInsets.all(16),
-        
-        itemBuilder: (context, index) => Container(
-        
-          color: Colors.white,
-          child: ListTile(
-            
-            title: Text(places[index].displayName),
-            onTap: () {
-              //avoid race conditions because of places
-              lock.synchronized(() async {
-                var place = places[index];
-                lastSearch = place.displayName;
-                _searchTextController.text = place.displayName;
-                _textFieldFocusNode.unfocus();
-                setState(() {
-                  _actualLocation = LatLng(place.lat, place.lon);
-                  _mapController.move(_actualLocation, 12);
-                  places = null;
-                  _actualPlace = place;
+        margin: EdgeInsets.only(top: 80 + kBottomNavigationBarHeight),
+        child: ListView.builder(
+          itemCount: places.length,
+          shrinkWrap: true,
+          padding: EdgeInsets.all(16),
+          itemBuilder: (context, index) => Container(
+            color: Colors.white,
+            child: ListTile(
+              title: Text(places[index].displayName),
+              onTap: () {
+                //avoid race conditions because of places
+                lock.synchronized(() async {
+                  var place = places[index];
+                  lastSearch = place.displayName;
+                  _searchTextController.text = place.displayName;
+                  _textFieldFocusNode.unfocus();
+                  setState(() {
+                    _actualLocation = LatLng(place.lat, place.lon);
+                    _mapController.move(_actualLocation, 12);
+                    places = null;
+                    _actualPlace = place;
+                  });
+                  widget.onLocationChanged(place);
                 });
-                widget.onLocationChanged(place);
-              });
-            },
+              },
+            ),
           ),
         ),
-      ),
-  );
+      );
 
   /*
     flutter map from open street view
    */
   Widget _getMap() => FlutterMap(
         mapController: _mapController,
-        options: MapOptions(
-          center: _actualLocation, zoom: 12.0,
-          interactive: false
-          //   plugins: [MapButtonsPlugin()]
-        ),
+        options:
+            MapOptions(center: _actualLocation, zoom: 12.0, interactive: false
+                //   plugins: [MapButtonsPlugin()]
+                ),
         layers: [
           TileLayerOptions(
             urlTemplate: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",

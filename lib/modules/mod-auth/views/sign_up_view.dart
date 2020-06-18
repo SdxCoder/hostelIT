@@ -182,10 +182,11 @@ class _SignUpViewState extends State<SignUpView> {
                         },
                       ),
                     ),
-               (model.foodCategories.isEmpty)
-                  ? Offstage() : SizedBox(
-                    height: 16,
-                  ),
+              (model.foodCategories.isEmpty)
+                  ? Offstage()
+                  : SizedBox(
+                      height: 16,
+                    ),
               (model.foodCategories.isEmpty)
                   ? Offstage()
                   : SizedBox(
@@ -197,7 +198,10 @@ class _SignUpViewState extends State<SignUpView> {
                             ...model.foodCategories.map<Widget>((element) {
                               return OptionsCapsuleTile(
                                   titleColor: Colors.white,
-                                  cancelIcon: Icon(Icons.cancel, color: Colors.white,),
+                                  cancelIcon: Icon(
+                                    Icons.cancel,
+                                    color: Colors.white,
+                                  ),
                                   onTapCancelIcon: () {
                                     model.removeFoodCategory(element);
                                   },
@@ -221,8 +225,23 @@ class _SignUpViewState extends State<SignUpView> {
                         prefixIconData: Icons.my_location,
                         suffixIconData: Icons.map,
                         onTapSuffixIcon: () {
-                          Navigator.of(context).push(MaterialPageRoute(builder: (context) => MapView()));
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => MapView()));
                         },
+                      ),
+                    ),
+              (model.role == Role.user)
+                  ? Offstage()
+                  : SizedBox(
+                      height: 16,
+                    ),
+              (model.role == Role.user)
+                  ? Offstage()
+                  : SizedBox(
+                      width: media.screenSize.width * 0.7,
+                      child: TextFieldCustom(
+                        hintText: "No de mesas",
+                        prefixIconData: Icons.my_location,
                       ),
                     ),
               (model.role == Role.user)
@@ -293,7 +312,10 @@ class _SignUpViewState extends State<SignUpView> {
                           widget: Text(
                             "Continuar Registro",
                           ),
-                          onPressed: () {}),
+                          onPressed: () {
+                     
+                            Modular.to.pushReplacementNamed(Routes.adminHome);
+                          }),
                     ),
               SizedBox(
                 height: 50,

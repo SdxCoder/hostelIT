@@ -15,6 +15,12 @@ Widget buildAppBar(
   return AppBar(
     elevation: 0.0,
     backgroundColor: backgroundColor,
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.only(
+        bottomLeft: Radius.circular(25),
+        bottomRight: Radius.circular(25),
+      )
+    ),
     title: title,
     centerTitle: centerTitle,
     leading: leading,

@@ -17,11 +17,8 @@ class RoundedCard extends StatelessWidget {
       child: Card(
           elevation: 0,
           shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
-          child: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: content,
-          )),
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
+          child: content),
     );
   }
 }

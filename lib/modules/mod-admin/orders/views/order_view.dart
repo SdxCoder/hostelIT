@@ -5,6 +5,10 @@ import 'package:client/modules/mod-admin/orders/view_models/orders_view_model.da
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
+import 'new_order_view.dart';
+import 'ongoing_orders.dart';
+import 'past_order_view.dart';
+
 class OrderView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -23,21 +27,22 @@ class OrderView extends StatelessWidget {
           bottom: TabBar(
                 labelColor: Theme.of(context).primaryColor,
                 labelStyle: Theme.of(context).accentTextTheme.subtitle2,
-                indicatorSize: TabBarIndicatorSize.tab,
+                indicatorSize: TabBarIndicatorSize.label,
+                indicatorColor: Theme.of(context).primaryColor,
                 isScrollable: true,
                 tabs: [
                   Container(
-                      width: MediaQuery.of(context).size.width * 0.2,
+                      width: MediaQuery.of(context).size.width * 0.25,
                       child: Tab(
                         text: "New Orders",
                       )),
                   Container(
-                      width: MediaQuery.of(context).size.width * 0.2,
+                      width: MediaQuery.of(context).size.width * 0.3,
                       child: Tab(
                         text: "Ongoing Orders",
                       )),
                    Container(
-                      width: MediaQuery.of(context).size.width * 0.2,
+                      width: MediaQuery.of(context).size.width * 0.25,
                       child: Tab(
                         text: "Past Orders",
                       ))
@@ -59,8 +64,7 @@ class OrderView extends StatelessWidget {
       builder: (context, model, child,){
         return model.orders.isEmpty ? 
        EmptyListPlaceHolder():
-       Text("New Orders");
-        //UpcomingBooking(model:model);
+       NewOrderView(model : model);
       }, 
     );
   }
@@ -73,9 +77,12 @@ class OrderView extends StatelessWidget {
       },
       builder: (context, model, child,){
         return model.orders.isEmpty ? 
-       EmptyListPlaceHolder():
-       Text("Ongoing Orders");
-        //UpcomingBooking(model:model);
+       EmptyListPlaceHolder(
+         text : "All Orders Completed",
+         iconData: Icons.check_circle,
+       ):
+       OngoingOrderView(model : model);
+   
       }, 
     );
   }
@@ -88,8 +95,11 @@ class OrderView extends StatelessWidget {
       },
       builder: (context, model, child,){
         return model.orders.isEmpty ? 
-       EmptyListPlaceHolder():
-       Text("Past Orders");
+       EmptyListPlaceHolder(
+         text: 'No Order History',
+         iconData: Icons.history,
+       ):
+       PastOrderView( model: model);
         //UpcomingBooking(model:model);
       }, 
     );

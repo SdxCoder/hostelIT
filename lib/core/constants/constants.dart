@@ -6,6 +6,12 @@ class Role{
   static String user = "Cliente";
 }
 
+class OrderStatus{
+  static String preparing = "Prepairing";
+  static String served = "Served";
+  static String completed = "Completed";
+}
+
 class DatePickerType{
    static String date = "By Date";
    static String range = "By Range";

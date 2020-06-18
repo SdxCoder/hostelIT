@@ -49,19 +49,23 @@ class App extends StatelessWidget {
             accentTextTheme: TextTheme(
               bodyText1: TextStyle(
                 color: const Color(0xcc6e7faa),
-                fontSize: 14
+                fontSize: 16
               ),
               bodyText2: TextStyle(
                 color: const Color(0xcc6e7faa),
-                fontSize: 11,
+                fontSize: 14,
                 fontWeight: FontWeight.normal
               ),
               subtitle1: TextStyle(
                 color: const Color(0xff3e3f68),
-                fontSize: 14
+                fontSize: 16
               ),
               subtitle2: TextStyle(
                 color: const Color(0xff3e3f68),
+                fontSize: 14
+              ),
+              caption: TextStyle(
+                color: const Color(0xcc6e7faa),
                 fontSize: 12
               ),
               

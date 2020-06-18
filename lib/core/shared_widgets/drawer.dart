@@ -20,7 +20,7 @@ class DrawerCustom extends StatelessWidget {
                 ),
                 SizedBox(height: 4,),
                 Text('El Celler de Can Roca',textAlign: TextAlign.center, style: Theme.of(context).accentTextTheme.subtitle1,),
-                Text('Carrer de Can Sunyer, 48, 17007 Girona, Spain', textAlign: TextAlign.center, style: Theme.of(context).accentTextTheme.bodyText2,)
+                Text('Carrer de Can Sunyer, 48, 17007 Girona, Spain', textAlign: TextAlign.center, style: Theme.of(context).accentTextTheme.caption,)
                 
               ],
             )

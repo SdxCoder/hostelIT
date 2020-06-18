@@ -1,8 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:client/core/utils/typography.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-Widget empltyList({String text, String asset}) {
-  return Center(
+
+class EmptyListPlaceHolder extends StatelessWidget {
+  final String text;
+  final IconData iconData;
+  final Widget child;
+
+  const EmptyListPlaceHolder({Key key, this.text = "No New Orders", this.iconData = FontAwesomeIcons.shoppingCart, this.child}) : super(key: key);
+  
+  @override
+  Widget build(BuildContext context) {
+    return Center(
     child: Padding(
       padding: const EdgeInsets.all(16.0),
       child: Column(
@@ -11,16 +21,14 @@ Widget empltyList({String text, String asset}) {
           SizedBox(
               height: 70,
               width: 70,
-              child: Image.asset(
-                asset ?? 'assets/tutor.png',
-                fit: BoxFit.contain,
-              )),
+              child: child ?? Icon(iconData, color: Theme.of(context).primaryColor, size: 32,)),
           Text(
-            text ?? "No Bookings",
-          //  style: Theme.of(context).accentTextTheme.bodyText1.copyWith(fontWeight: FontWeight.bold),
+            text,
+            style: Theme.of(context).accentTextTheme.bodyText1.copyWith(fontWeight: FontWeight.bold),
           )
         ],
       ),
     ),
   );
+  }
 }

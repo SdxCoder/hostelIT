@@ -58,7 +58,7 @@ class OrderView extends StatelessWidget {
       },
       builder: (context, model, child,){
         return model.orders.isEmpty ? 
-       empltyList():
+       EmptyListPlaceHolder():
        Text("New Orders");
         //UpcomingBooking(model:model);
       }, 
@@ -73,7 +73,7 @@ class OrderView extends StatelessWidget {
       },
       builder: (context, model, child,){
         return model.orders.isEmpty ? 
-       empltyList():
+       EmptyListPlaceHolder():
        Text("Ongoing Orders");
         //UpcomingBooking(model:model);
       }, 
@@ -88,7 +88,7 @@ class OrderView extends StatelessWidget {
       },
       builder: (context, model, child,){
         return model.orders.isEmpty ? 
-       empltyList():
+       EmptyListPlaceHolder():
        Text("Past Orders");
         //UpcomingBooking(model:model);
       }, 

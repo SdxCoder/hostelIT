@@ -12,6 +12,7 @@ class DropDownField extends StatelessWidget {
   final Function onTapPrefixIcon;
   final IconData suffixIconData;
   final IconData prefixIconData;
+  final Color backgrounColor;
   final Color dropDownColor;
   final Color hintTextColor;
   final Color prefixIconColor;
@@ -33,14 +34,14 @@ class DropDownField extends StatelessWidget {
     this.valueColor = Colors.white,
     this.hintTextColor = Colors.white,
     this.prefixIconColor = Colors.white,
-    this.sufixIconColor = Colors.white,
+    this.sufixIconColor = Colors.white, this.backgrounColor,
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Container(
       height: 48,
       decoration: BoxDecoration(
-          color: Colors.white.withOpacity(0.2),
+          color: backgroundColor ?? Colors.white.withOpacity(0.2),
           borderRadius: BorderRadius.circular(10)),
       child: DropdownButtonFormField(
         value: value,

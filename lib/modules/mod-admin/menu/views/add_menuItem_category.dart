@@ -42,7 +42,7 @@ class AddMenuItemView extends StatelessWidget {
             TextFieldCustom(
               textColor: Theme.of(context).accentColor,
               backgroundColor: Colors.white,
-              hintText: 'Enter Category Name',
+              hintText: 'Enter Item Name',
               hintTextColor: Theme.of(context).accentColor,
               cursorColor: Theme.of(context).primaryColor,
               prefixIconColor: Theme.of(context).iconTheme.color,
@@ -51,15 +51,19 @@ class AddMenuItemView extends StatelessWidget {
             SizedBox(height: 16),
             DropDownField(
               collection: [
-                'Italian'
+                'Italian','Oreintal',
               ],
+              value: 'Italian',
               dropDownColor: Colors.white,
+              backgrounColor: Colors.white,
               hintText: 'Enter Category Name',
               hintTextColor: Theme.of(context).accentColor,
               valueColor: Theme.of(context).accentColor,
               prefixIconColor: Theme.of(context).iconTheme.color,
               prefixIconData: Icons.category,
-              
+              onChanged: (value){
+
+              },
             ),
             Spacer(),
             Align(

@@ -46,7 +46,7 @@ class NewOrderView extends StatelessWidget {
                         actions: ButtonBar(children: [
                           SizedBox(
                             height: 35,
-                            child: flatButton(context,
+                            child: flatButton(
                                 onPressed: () {}, widget: Text('Cancel')),
                           ),
                           SizedBox(
@@ -63,7 +63,7 @@ class NewOrderView extends StatelessWidget {
       Spacer(),
       SizedBox(
         height: 35,
-        child: flatButton(context, onPressed: () {}, widget: Text('Cancel')),
+        child: flatButton( onPressed: () {}, widget: Text('Cancel')),
       ),
       SizedBox(
         width: 8,

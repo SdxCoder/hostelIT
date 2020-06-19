@@ -42,10 +42,12 @@ class App extends StatelessWidget {
           theme: ThemeData(
             fontFamily: "Poppins-Medium",
             primaryColor: const Color(0xff3e3f68),
+            accentColor: const Color(0xcc6e7faa),
             iconTheme: IconThemeData(
               color: const Color(0xff3e3f68),
             ),
             buttonColor: const Color(0xff3e3f68),
+            
             accentTextTheme: TextTheme(
               bodyText1: TextStyle(
                 color: const Color(0xcc6e7faa),
@@ -77,6 +79,7 @@ class App extends StatelessWidget {
           initialRoute: Modular.initialRoute,
           navigatorKey: Modular.navigatorKey,
           onGenerateRoute: Modular.generateRoute,
+      
       
     );
   }

@@ -1,5 +1,6 @@
 
 import 'package:client/modules/mod-admin/home/admin_home.dart';
+import 'package:client/modules/mod-admin/mod_admin.dart';
 import 'package:client/modules/mod-admin/orders/views/order_details_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -37,7 +38,7 @@ class AppModule extends MainModule {
         Router("/login", child: (_, args) => LoginView()),
         Router("/signup", child: (_, args) => SignUpView()),
         Router('/forgotPassword',child: (_, args) => ForgotPasswordView()),
-        Router('/adminHome',child: (_, args) => AdminHome()),
-         Router('/orderDetail',child: (_, args) => OrderDetailsView(order: args.data,)),
+        Router("/adminHome" ,module: AdminModule()),
+       
       ];
 }

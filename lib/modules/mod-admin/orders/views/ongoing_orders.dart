@@ -64,7 +64,7 @@ class OngoingOrderView extends StatelessWidget {
                             height: 35,
                             child: raisedButton(
                                 onPressed: () {},
-                                widget: Text('Process Order')),
+                                widget: Text('Cancel')),
                           ),
                         ])),
                   ));

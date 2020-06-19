@@ -163,54 +163,54 @@ class _SignUpViewState extends State<SignUpView> {
                         prefixIconData: Icons.location_city,
                       ),
                     ),
-              (model.role == Role.user)
-                  ? Offstage()
-                  : SizedBox(
-                      height: 16,
-                    ),
-              (model.role == Role.user)
-                  ? Offstage()
-                  : SizedBox(
-                      width: media.screenSize.width * 0.7,
-                      child: TextFieldCustom(
-                        controller: foodController,
-                        hintText: "Categoría de comida",
-                        prefixIconData: Icons.fastfood,
-                        suffixIconData: Icons.add,
-                        onTapSuffixIcon: () {
-                          model.addFoodCatergories(foodController.text.trim());
-                        },
-                      ),
-                    ),
-              (model.foodCategories.isEmpty)
-                  ? Offstage()
-                  : SizedBox(
-                      height: 16,
-                    ),
-              (model.foodCategories.isEmpty)
-                  ? Offstage()
-                  : SizedBox(
-                      width: media.screenSize.width * 0.7,
-                      child: Align(
-                        alignment: Alignment.centerLeft,
-                        child: Wrap(
-                          children: [
-                            ...model.foodCategories.map<Widget>((element) {
-                              return OptionsCapsuleTile(
-                                  titleColor: Colors.white,
-                                  cancelIcon: Icon(
-                                    Icons.cancel,
-                                    color: Colors.white,
-                                  ),
-                                  onTapCancelIcon: () {
-                                    model.removeFoodCategory(element);
-                                  },
-                                  title: element);
-                            })
-                          ],
-                        ),
-                      ),
-                    ),
+              // (model.role == Role.user)
+              //     ? Offstage()
+              //     : SizedBox(
+              //         height: 16,
+              //       ),
+              // (model.role == Role.user)
+              //     ? Offstage()
+              //     : SizedBox(
+              //         width: media.screenSize.width * 0.7,
+              //         child: TextFieldCustom(
+              //           controller: foodController,
+              //           hintText: "Categoría de comida",
+              //           prefixIconData: Icons.fastfood,
+              //           suffixIconData: Icons.add,
+              //           onTapSuffixIcon: () {
+              //             model.addFoodCatergories(foodController.text.trim());
+              //           },
+              //         ),
+              //       ),
+              // (model.foodCategories.isEmpty)
+              //     ? Offstage()
+              //     : SizedBox(
+              //         height: 16,
+              //       ),
+              // (model.foodCategories.isEmpty)
+              //     ? Offstage()
+              //     : SizedBox(
+              //         width: media.screenSize.width * 0.7,
+              //         child: Align(
+              //           alignment: Alignment.centerLeft,
+              //           child: Wrap(
+              //             children: [
+              //               ...model.foodCategories.map<Widget>((element) {
+              //                 return OptionsCapsuleTile(
+              //                     titleColor: Colors.white,
+              //                     cancelIcon: Icon(
+              //                       Icons.cancel,
+              //                       color: Colors.white,
+              //                     ),
+              //                     onTapCancelIcon: () {
+              //                       model.removeFoodCategory(element);
+              //                     },
+              //                     title: element);
+              //               })
+              //             ],
+              //           ),
+              //         ),
+              //       ),
               (model.role == Role.user)
                   ? Offstage()
                   : SizedBox(

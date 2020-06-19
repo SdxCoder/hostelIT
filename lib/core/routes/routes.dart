@@ -5,7 +5,10 @@ class Routes{
   static const String signup = "/signup";
   static const String forgotPassword = "/forgotPassword"; 
   static const String adminHome = "/adminHome"; 
-  static const String orderDetails = "/orderDetail";
+  static const String orderDetails = "$adminHome/orderDetail";
+  static const String menu = "$adminHome/menu";
+  static const String addCategory = "$adminHome/addCategory";
+  static const String addMenuItem = "$adminHome/addMenuItem";
 
   // user home routes
   static const String userHome = "/userHome";  // user home

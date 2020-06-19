@@ -1,5 +1,6 @@
 import 'package:client/core/core.dart';
 import 'package:client/core/shared_widgets/app_bar.dart';
+import 'package:client/modules/mod-admin/notifications/view/notification_view.dart';
 import 'package:client/modules/mod-admin/orders/views/order_view.dart';
 import 'package:flutter/material.dart';
 
@@ -13,12 +14,13 @@ class _AdminHomeState extends State<AdminHome> {
 
   List<Widget> _tabs = [
     OrderView(),
-    Text('notifications')
+    NotificationsView()
   ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: _tabs[_currentIndex],
+   
       bottomNavigationBar: BottomNavBar(
         navItems: [
           BottomNavigationBarItem(

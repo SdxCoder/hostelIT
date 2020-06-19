@@ -13,6 +13,8 @@ export './models/current_user.dart';
 export './models/user.dart';
 export './models/osm_location.dart';
 export './models/order.dart';
+export './models/category.dart';
+export './models/notifications.dart';
 
 
 

@@ -13,22 +13,33 @@ class TextFieldCustom extends StatefulWidget {
   final Function onTapPrefixIcon;
   final IconData suffixIconData;
   final IconData prefixIconData;
-  final FocusNode focusNode; 
+  final FocusNode focusNode;
   final Color backgroundColor;
   final Color hintTextColor;
   final Color cursorColor;
   final Color textColor;
+  final Color prefixIconColor;
+  final Color sufixIconColor;
 
-  const TextFieldCustom(
-      {Key key,
-      this.title,
-      this.controller,
-      this.validator,
-      this.onFieldSubmit,
-      this.hintText,
-      this.onTapSuffixIcon,
-       this.suffixIconData, this.prefixIconData, this.onTapPrefixIcon, this.focusNode, this.backgroundColor, this.hintTextColor, this.cursorColor, this.textColor})
-      : super(key: key);
+  const TextFieldCustom({
+    Key key,
+    this.title,
+    this.controller,
+    this.validator,
+    this.onFieldSubmit,
+    this.hintText,
+    this.onTapSuffixIcon,
+    this.suffixIconData,
+    this.prefixIconData,
+    this.onTapPrefixIcon,
+    this.focusNode,
+    this.backgroundColor,
+    this.hintTextColor = Colors.white,
+    this.cursorColor = Colors.white,
+    this.textColor = Colors.white,
+    this.prefixIconColor = Colors.white,
+    this.sufixIconColor = Colors.white,
+  }) : super(key: key);
 
   @override
   _TextFieldState createState() => _TextFieldState();
@@ -46,33 +57,42 @@ class _TextFieldState extends State<TextFieldCustom> {
         focusNode: widget.focusNode,
         validator: widget.validator,
         cursorWidth: 1,
-        cursorColor: widget.cursorColor ?? Colors.white,
+        cursorColor: widget.cursorColor,
         autofocus: false,
         controller: widget.controller,
-        style: Theme.of(context).textTheme.bodyText2.copyWith(decoration: TextDecoration.none, color: widget.textColor ?? Colors.white),
+        style: Theme.of(context)
+            .textTheme
+            .bodyText2
+            .copyWith(decoration: TextDecoration.none, color: widget.textColor),
         onFieldSubmitted: widget.onFieldSubmit,
         decoration: InputDecoration(
-            
             labelText: widget.title,
-            labelStyle: Theme.of(context).textTheme.bodyText2.copyWith(color: lightBlackColor),
+            labelStyle: Theme.of(context)
+                .textTheme
+                .bodyText2
+                .copyWith(color: lightBlackColor),
             hintText: widget.hintText,
-            hintStyle: Theme.of(context).textTheme.bodyText2.copyWith(fontWeight: FontWeight.w300, color: widget.hintTextColor ?? Colors.white),
+            hintStyle: Theme.of(context).textTheme.bodyText2.copyWith(
+                fontWeight: FontWeight.w300, color: widget.hintTextColor),
             contentPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 2),
-            suffixIcon: widget.suffixIconData == null ? null : GestureDetector(
-              onTap: widget.onTapSuffixIcon,
-              child: Icon(
-                widget.suffixIconData,
-              
-                color: Colors.white,
-              ),
-            ),
-             prefixIcon: widget.prefixIconData == null ? null : GestureDetector(
-              onTap: widget.onTapPrefixIcon,
-              child: Icon(
-                widget.prefixIconData,
-                color: Colors.white,
-              ),
-            ),
+            suffixIcon: widget.suffixIconData == null
+                ? null
+                : GestureDetector(
+                    onTap: widget.onTapSuffixIcon,
+                    child: Icon(
+                      widget.suffixIconData,
+                      color: widget.sufixIconColor,
+                    ),
+                  ),
+            prefixIcon: widget.prefixIconData == null
+                ? null
+                : GestureDetector(
+                    onTap: widget.onTapPrefixIcon,
+                    child: Icon(
+                      widget.prefixIconData,
+                      color: widget.prefixIconColor,
+                    ),
+                  ),
             border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(50),
                 borderSide: BorderSide.none)),

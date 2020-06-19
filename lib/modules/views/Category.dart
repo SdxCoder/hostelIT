@@ -34,7 +34,7 @@ class Category extends StatelessWidget {
             offset: Offset(66.0, 398.0),
             child:
                 // Adobe XD layer: 'pablo-merchan-monte…' (shape)
-                Container(
+            Container(
               width: 993.1,
               height: 231.7,
               decoration: BoxDecoration(

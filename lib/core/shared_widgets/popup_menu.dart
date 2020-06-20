@@ -5,15 +5,16 @@ import 'package:flutter/material.dart';
 class PopupMenu<T> extends StatelessWidget {
   final List<T> collection;
   final Function(String) onSelected;
+  final Color iconColor;
 
-  const PopupMenu({Key key, this.collection, this.onSelected}) : super(key: key);
+  const PopupMenu({Key key, this.collection, this.onSelected, this.iconColor = Colors.white}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return PopupMenuButton<String>(
       elevation: 0,
       icon: Icon(
         Icons.more_vert,
-        color: Colors.white,
+        color: iconColor,
       ),
       onSelected: this.onSelected,
       itemBuilder: (BuildContext context) => [

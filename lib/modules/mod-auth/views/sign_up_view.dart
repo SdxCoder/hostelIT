@@ -77,7 +77,6 @@ class _SignUpViewState extends State<SignUpView> {
 
   @override
   Widget build(BuildContext context) {
-    // ScreenUtil.init(context, allowFontScaling: true);
     return ResponsiveBuilder(
       builder: (context, media) => ViewModelBuilder.reactive(
         viewModelBuilder: () => AuthViewModel(),
@@ -98,9 +97,7 @@ class _SignUpViewState extends State<SignUpView> {
               SizedBox(
                 height: 50,
               ),
-              (model.role != Role.user)
-                  ? Offstage()
-                  : CircleAvatar(
+              CircleAvatar(
                       backgroundColor: Colors.white.withOpacity(0.2),
                       radius: 70,
                       child: Stack(
@@ -111,7 +108,7 @@ class _SignUpViewState extends State<SignUpView> {
                           ),
                           Center(
                               child: Icon(
-                            Icons.person,
+                            (model.role == Role.user) ? Icons.person : Icons.restaurant,
                             color: Colors.white,
                             size: 50,
                           )),
@@ -120,7 +117,12 @@ class _SignUpViewState extends State<SignUpView> {
                               right: 8,
                               child: GestureDetector(
                                   onTap: () {
-                                    print("upload");
+                                    if(model.role == Role.user){
+                                       print("upload user pic");
+                                    }else{
+                                      print("upload restaurant pic");
+                                    }
+                                   
                                   },
                                   child: Icon(
                                     Icons.photo_camera,
@@ -163,54 +165,7 @@ class _SignUpViewState extends State<SignUpView> {
                         prefixIconData: Icons.location_city,
                       ),
                     ),
-              // (model.role == Role.user)
-              //     ? Offstage()
-              //     : SizedBox(
-              //         height: 16,
-              //       ),
-              // (model.role == Role.user)
-              //     ? Offstage()
-              //     : SizedBox(
-              //         width: media.screenSize.width * 0.7,
-              //         child: TextFieldCustom(
-              //           controller: foodController,
-              //           hintText: "Categoría de comida",
-              //           prefixIconData: Icons.fastfood,
-              //           suffixIconData: Icons.add,
-              //           onTapSuffixIcon: () {
-              //             model.addFoodCatergories(foodController.text.trim());
-              //           },
-              //         ),
-              //       ),
-              // (model.foodCategories.isEmpty)
-              //     ? Offstage()
-              //     : SizedBox(
-              //         height: 16,
-              //       ),
-              // (model.foodCategories.isEmpty)
-              //     ? Offstage()
-              //     : SizedBox(
-              //         width: media.screenSize.width * 0.7,
-              //         child: Align(
-              //           alignment: Alignment.centerLeft,
-              //           child: Wrap(
-              //             children: [
-              //               ...model.foodCategories.map<Widget>((element) {
-              //                 return OptionsCapsuleTile(
-              //                     titleColor: Colors.white,
-              //                     cancelIcon: Icon(
-              //                       Icons.cancel,
-              //                       color: Colors.white,
-              //                     ),
-              //                     onTapCancelIcon: () {
-              //                       model.removeFoodCategory(element);
-              //                     },
-              //                     title: element);
-              //               })
-              //             ],
-              //           ),
-              //         ),
-              //       ),
+            
               (model.role == Role.user)
                   ? Offstage()
                   : SizedBox(

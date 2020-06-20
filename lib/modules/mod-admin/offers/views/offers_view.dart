@@ -52,7 +52,7 @@ class OffersView extends StatelessWidget {
         return Slidable(
                 actionExtentRatio: 0.25,
                 key: UniqueKey(),
-                actions: <Widget>[
+                secondaryActions: <Widget>[
                   new IconSlideAction(
                     caption: 'Edit',
                     color: Colors.transparent,

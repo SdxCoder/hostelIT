@@ -7,6 +7,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'home/admin_home.dart';
 import 'menu/views/menu_items_view.dart';
 import 'orders/views/order_details_view.dart';
+import 'profile/views/profile_view.dart';
 
 class AdminModule extends ChildModule{
 
@@ -25,6 +26,7 @@ class AdminModule extends ChildModule{
      Router('/addMenuItem', child: (_, args) => AddMenuItemView(menuItem: args.data,)),
      Router('/menuItems', child: (_, args) => MenuItemsView()),
      Router('/offers', child: (_, args) => OffersView()),
+     Router('/profile', child: (_, args) => ProfileView()),
 
   ];
 

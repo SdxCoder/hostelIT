@@ -97,7 +97,11 @@ class DrawerCustom extends StatelessWidget {
               'Profile',
               style: Theme.of(context).accentTextTheme.subtitle1,
             ),
-            onTap: () {},
+            onTap: () {
+               Modular.to.pushNamed(Routes.profile).then((value){
+                Modular.to.pop();
+              });
+            },
           ),
           ListTile(
             leading: Icon(FontAwesomeIcons.signOutAlt,

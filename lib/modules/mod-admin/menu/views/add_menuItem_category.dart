@@ -1,5 +1,6 @@
 import 'package:client/core/core.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
 class AddMenuItemView extends StatelessWidget {
@@ -46,24 +47,64 @@ class AddMenuItemView extends StatelessWidget {
               hintTextColor: Theme.of(context).accentColor,
               cursorColor: Theme.of(context).primaryColor,
               prefixIconColor: Theme.of(context).iconTheme.color,
-              prefixIconData: Icons.category,
+              prefixIconData: Icons.restaurant_menu,
             ),
             SizedBox(height: 16),
             DropDownField(
               collection: [
-                'Italian','Oreintal',
+                'Italian',
               ],
               value: 'Italian',
               dropDownColor: Colors.white,
               backgrounColor: Colors.white,
+              defaultIconColor: Theme.of(context).iconTheme.color,
               hintText: 'Enter Category Name',
               hintTextColor: Theme.of(context).accentColor,
               valueColor: Theme.of(context).accentColor,
               prefixIconColor: Theme.of(context).iconTheme.color,
               prefixIconData: Icons.category,
-              onChanged: (value){
-
-              },
+              onChanged: (value) {},
+            ),
+            SizedBox(height: 16),
+            Container(
+              width: media.screenSize.width,
+              child: Row(
+                children: [
+                  Expanded(
+                    child: TextFieldCustom(
+                      textColor: Theme.of(context).accentColor,
+                      backgroundColor: Colors.white,
+                      hintText: 'Enter Normal Price',
+                      hintTextColor: Theme.of(context).accentColor,
+                      cursorColor: Theme.of(context).primaryColor,
+                      prefixIconColor: Theme.of(context).iconTheme.color,
+                      prefixIconData: FontAwesomeIcons.dollarSign,
+                    ),
+                  ),
+                  SizedBox(width: 16),
+                  Expanded(
+                    child: TextFieldCustom(
+                      textColor: Theme.of(context).accentColor,
+                      backgroundColor: Colors.white,
+                      hintText: 'Enter Discunt Price (optional)',
+                      hintTextColor: Theme.of(context).accentColor,
+                      cursorColor: Theme.of(context).primaryColor,
+                      prefixIconColor: Theme.of(context).iconTheme.color,
+                      prefixIconData: Icons.local_offer,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(height: 16),
+            TextFieldCustom(
+              textColor: Theme.of(context).accentColor,
+              backgroundColor: Colors.white,
+              hintText: 'Write some description...',
+              hintTextColor: Theme.of(context).accentColor,
+              cursorColor: Theme.of(context).primaryColor,
+              prefixIconColor: Theme.of(context).iconTheme.color,
+              prefixIconData: Icons.local_offer,
             ),
             Spacer(),
             Align(
@@ -72,9 +113,7 @@ class AddMenuItemView extends StatelessWidget {
                 height: 35,
                 child: raisedButton(
                   btnText: 'Save',
-                  onPressed: () {
-
-                  },
+                  onPressed: () {},
                 ),
               ),
             )

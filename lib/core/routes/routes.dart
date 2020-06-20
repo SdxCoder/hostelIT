@@ -9,6 +9,7 @@ class Routes{
   static const String menu = "$adminHome/menu";
   static const String addCategory = "$adminHome/addCategory";
   static const String addMenuItem = "$adminHome/addMenuItem";
+  static const String menuItems = "$adminHome/menuItems";
 
   // user home routes
   static const String userHome = "/userHome";  // user home

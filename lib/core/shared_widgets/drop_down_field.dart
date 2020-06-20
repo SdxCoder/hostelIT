@@ -17,7 +17,8 @@ class DropDownField extends StatelessWidget {
   final Color hintTextColor;
   final Color prefixIconColor;
   final Color sufixIconColor;
-   final Color valueColor;
+  final Color valueColor;
+  final Color defaultIconColor;
 
   const DropDownField({
     Key key,
@@ -34,14 +35,15 @@ class DropDownField extends StatelessWidget {
     this.valueColor = Colors.white,
     this.hintTextColor = Colors.white,
     this.prefixIconColor = Colors.white,
-    this.sufixIconColor = Colors.white, this.backgrounColor,
+    this.sufixIconColor = Colors.white, 
+    this.backgrounColor, this.defaultIconColor = Colors.white,
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Container(
       height: 48,
       decoration: BoxDecoration(
-          color: backgroundColor ?? Colors.white.withOpacity(0.2),
+          color: this.backgrounColor ?? Colors.white.withOpacity(0.2),
           borderRadius: BorderRadius.circular(10)),
       child: DropdownButtonFormField(
         value: value,
@@ -49,7 +51,7 @@ class DropDownField extends StatelessWidget {
               color: valueColor,
             ),
         dropdownColor: dropDownColor ?? Colors.black.withOpacity(0.9),
-        iconEnabledColor: Colors.white,
+        iconEnabledColor: defaultIconColor,
         decoration: InputDecoration(
             labelText: title,
             labelStyle: Theme.of(context).textTheme.bodyText2,

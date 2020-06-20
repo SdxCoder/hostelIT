@@ -1,14 +1,18 @@
 import 'package:client/core/core.dart';
 import 'package:client/modules/mod-admin/menu/view_models/menu_view_model.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
+import 'package:stacked/stacked.dart';
 
 class MenuItemsView extends StatelessWidget {
-  final MenuViewModel model;
 
-  const MenuItemsView({Key key, this.model}) : super(key: key);
+  const MenuItemsView({Key key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return ViewModelBuilder<MenuViewModel>.reactive(
+      viewModelBuilder: () => MenuViewModel(),
+      builder: (context, model, child) =>
+    Scaffold(
       appBar: buildAppBar(
         backgroundColor: Colors.white,
         centerTitle: true,
@@ -21,56 +25,88 @@ class MenuItemsView extends StatelessWidget {
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: buildMenuItemList(),
+        child: buildMenuItemList(model),
       ),
-    );
+    ));
   }
- 
-  Widget buildMenuItemList() {
+
+  Widget buildMenuItemList(MenuViewModel model) {
     return ListView.builder(
-      itemCount: 1,
+      itemCount: model.menuItems.length,
       shrinkWrap: true,
       itemBuilder: (BuildContext context, int index) {
-      return RoundedCard(
-        content: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Container(
-              height: 150,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  fit: BoxFit.cover,
-                  image: AssetImage('assets/images/menu_item_bg.jpg',))
+        final menuItem = model.menuItems[index];
+        return RoundedCard(
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Stack(
+                children: [
+                  Container(
+                    height: MediaQuery.of(context).size.height * 0.15,
+                    decoration: BoxDecoration(
+                        image: DecorationImage(
+                            fit: BoxFit.cover,
+                            image: AssetImage(
+                              'assets/images/menu_item_bg.jpg',
+                            ))),
+                  ),
+                  Positioned(
+                      right: 4,
+                      top: 4,
+                      child:PopupMenu(
+                        collection: <String>[
+                          'Edit',
+                          'Delete'
+                        ],
+                        onSelected: (value){
+                          if(value == "Edit"){
+                            Modular.to.pushNamed(Routes.addMenuItem, arguments: menuItem);
+                          }
+
+                          if(value == "Delete"){
+                            print('delete');
+                          }
+
+                        },
+                      ))
+                ],
               ),
-              ),
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children:[
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+              Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                    Text('Pizza', style:Theme.of(context).accentTextTheme.subtitle1),
-                    Text('Italian', style:Theme.of(context).accentTextTheme.bodyText2),
-
-                  ],),
-                   Column(
-                     crossAxisAlignment: CrossAxisAlignment.end,
-                     children: [
-                    Text('\$ 10', style:Theme.of(context).accentTextTheme.subtitle2.copyWith(
-                      fontWeight:FontWeight.bold
-                    )),
-                    Text('Discount: -26%', style:Theme.of(context).accentTextTheme.bodyText2),
-
-                  ],),
-                ]
-              ),
-            )
-          ],
-        ),
-      );
-     },
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text('Pizza',
+                              style:
+                                  Theme.of(context).accentTextTheme.subtitle1),
+                          Text('Italian',
+                              style:
+                                  Theme.of(context).accentTextTheme.bodyText2),
+                        ],
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: [
+                          Text('\$ 10',
+                              style: Theme.of(context)
+                                  .accentTextTheme
+                                  .subtitle2
+                                  .copyWith(fontWeight: FontWeight.bold)),
+                          Text('Discount: -26%',
+                              style:
+                                  Theme.of(context).accentTextTheme.bodyText2),
+                        ],
+                      ),
+                    ]),
+              )
+            ],
+          ),
+        );
+      },
     );
   }
 }

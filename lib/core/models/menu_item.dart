@@ -1,5 +1,5 @@
 
 
-class MenuItem{
-  
+class FoodMenuItem{
+
 }

@@ -21,7 +21,7 @@ class AdminModule extends ChildModule{
      Router('/orderDetail', child: (_, args) => OrderDetailsView(order: args.data,)),
      Router('/menu', child: (_, args) => MenuView()),
      Router('/addCategory', child: (_, args) => AddCategoyView()),
-     Router('/addMenuItem', child: (_, args) => AddMenuItemView()),
+     Router('/addMenuItem', child: (_, args) => AddMenuItemView(menuItem: args.data,)),
      Router('/menuItems', child: (_, args) => MenuItemsView()),
 
   ];

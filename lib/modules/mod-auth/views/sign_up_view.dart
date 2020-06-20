@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_screenutil/screenutil.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:stacked/stacked.dart';
@@ -195,8 +196,8 @@ class _SignUpViewState extends State<SignUpView> {
                   : SizedBox(
                       width: media.screenSize.width * 0.7,
                       child: TextFieldCustom(
-                        hintText: "No de mesas",
-                        prefixIconData: Icons.my_location,
+                        hintText: "Numero de mesas",
+                        prefixIconData: FontAwesomeIcons.table,
                       ),
                     ),
               (model.role == Role.user)

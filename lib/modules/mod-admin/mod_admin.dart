@@ -5,6 +5,7 @@ import 'package:client/modules/mod-admin/offers/views/offers_view.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 import 'home/admin_home.dart';
+import 'manage_tables/view/manage_table_view.dart';
 import 'menu/views/menu_items_view.dart';
 import 'orders/views/order_details_view.dart';
 import 'profile/views/profile_view.dart';
@@ -27,6 +28,7 @@ class AdminModule extends ChildModule{
      Router('/menuItems', child: (_, args) => MenuItemsView()),
      Router('/offers', child: (_, args) => OffersView()),
      Router('/profile', child: (_, args) => ProfileView()),
+     Router('/manageTables', child: (_, args) => ManageTableView()),
 
   ];
 

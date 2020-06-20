@@ -69,7 +69,11 @@ class DrawerCustom extends StatelessWidget {
               'Manage Tables',
               style: Theme.of(context).accentTextTheme.subtitle1,
             ),
-            onTap: () {},
+            onTap: () {
+               Modular.to.pushNamed(Routes.manageTables).then((value){
+                Modular.to.pop();
+              });
+            },
           ),
           ListTile(
             leading: Icon(FontAwesomeIcons.book,

@@ -29,7 +29,7 @@ class OffersView extends StatelessWidget {
           child: Column(
             children: [
               SizedBox(height: 16),
-              Text('Offers',
+              Text('Ofertas',
                   style: Theme.of(context)
                       .accentTextTheme
                       .subtitle1

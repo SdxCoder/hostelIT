@@ -6,7 +6,7 @@ import 'package:responsive_builder/responsive_builder.dart';
 import 'package:stacked/stacked.dart';
 
 class AddMenuItemView extends StatelessWidget {
-  final FoodMenuItem menuItem;
+  final MenuItem menuItem;
 
   const AddMenuItemView({Key key, this.menuItem}) : super(key: key);
   @override

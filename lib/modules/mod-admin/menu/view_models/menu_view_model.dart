@@ -8,8 +8,8 @@ class MenuViewModel extends BaseViewModel{
     Category(),
   ];
 
-  List<FoodMenuItem>  menuItems = [
-    FoodMenuItem()
+  List<MenuItem>  menuItems = [
+    MenuItem()
   ];
   
   

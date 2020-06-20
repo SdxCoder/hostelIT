@@ -50,7 +50,7 @@ class NotificationsView extends StatelessWidget {
         final notification = model.notifications[index];
         return ListTile(
           leading: CircleAvatar(
-            radius: 20,
+            radius: 30,
             backgroundImage: AssetImage('assets/images/profile_photo.jpg'),
           ),
           contentPadding: EdgeInsets.symmetric(horizontal: 0),

@@ -1,6 +1,7 @@
 import 'package:client/modules/mod-admin/menu/views/add_category.dart';
 import 'package:client/modules/mod-admin/menu/views/add_menuItem_category.dart';
 import 'package:client/modules/mod-admin/menu/views/menu_view.dart';
+import 'package:client/modules/mod-admin/offers/views/offers_view.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 import 'home/admin_home.dart';
@@ -23,6 +24,7 @@ class AdminModule extends ChildModule{
      Router('/addCategory', child: (_, args) => AddCategoyView()),
      Router('/addMenuItem', child: (_, args) => AddMenuItemView(menuItem: args.data,)),
      Router('/menuItems', child: (_, args) => MenuItemsView()),
+     Router('/offers', child: (_, args) => OffersView()),
 
   ];
 

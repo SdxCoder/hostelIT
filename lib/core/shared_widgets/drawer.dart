@@ -46,7 +46,7 @@ class DrawerCustom extends StatelessWidget {
               Modular.to.pushNamed(Routes.menu).then((value){
                 Modular.to.pop();
               });
-              //Modular.to.pop();
+             
             },
           ),
           ListTile(
@@ -56,7 +56,11 @@ class DrawerCustom extends StatelessWidget {
               'Offers',
               style: Theme.of(context).accentTextTheme.subtitle1,
             ),
-            onTap: () {},
+            onTap: () {
+               Modular.to.pushNamed(Routes.offers).then((value){
+                Modular.to.pop();
+              });
+            },
           ),
           ListTile(
             leading: Icon(FontAwesomeIcons.table,

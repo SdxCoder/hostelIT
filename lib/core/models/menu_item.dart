@@ -1,5 +1,9 @@
 
 
-class FoodMenuItem{
+class MenuItem{
+
+}
+
+class DicountedMenuItem extends MenuItem{
 
 }

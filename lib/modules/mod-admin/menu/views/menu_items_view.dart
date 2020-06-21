@@ -45,10 +45,16 @@ class MenuItemsView extends StatelessWidget {
                   Container(
                     height: MediaQuery.of(context).size.height * 0.15,
                     decoration: BoxDecoration(
+                        borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(10),
+                          topRight: Radius.circular(10)
+                        ),
                         image: DecorationImage(
                             fit: BoxFit.cover,
+                            
                             image: AssetImage(
                               'assets/images/menu_item_bg.jpg',
+                            
                             ))),
                   ),
                   Positioned(
@@ -67,7 +73,6 @@ class MenuItemsView extends StatelessWidget {
                           if(value == "Delete"){
                             print('delete');
                           }
-
                         },
                       ))
                 ],

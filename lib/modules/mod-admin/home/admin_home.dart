@@ -26,7 +26,7 @@ class _AdminHomeState extends State<AdminHome> {
           BottomNavigationBarItem(
             icon: Icon(Icons.home,), title: Text('Home', style: Theme.of(context).accentTextTheme.bodyText2,)),
           BottomNavigationBarItem(icon: Icon(Icons.notifications,), title: Text('Notifications', style: Theme.of(context).accentTextTheme.bodyText2,))
-       
+        
         ],
         currentIndex: _currentIndex,
         onTap: (index){

@@ -12,7 +12,6 @@ class OrderCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return ResponsiveBuilder(
       builder: (context, media) => RoundedCard(
-        onTap: () {},
         content: Container(
           padding: EdgeInsets.all(8),
           child: Column(mainAxisSize: MainAxisSize.min, children: [

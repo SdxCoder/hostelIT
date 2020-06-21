@@ -80,13 +80,14 @@ class MenuView extends StatelessWidget {
                 actionExtentRatio: 0.25,
                 key: UniqueKey(),
                 secondaryActions: <Widget>[
-                  new IconSlideAction(
-                    caption: 'Edit',
-                    color: Colors.transparent,
-                    icon: Icons.edit,
-                    foregroundColor: Theme.of(context).primaryColor,
-                    onTap: () {},
-                  ),
+                  // new IconSlideAction(
+                  //   caption: 'Edit',
+                  //   color: Colors.transparent,
+                  //   icon: Icons.edit,
+                  //   foregroundColor: Theme.of(context).primaryColor,
+                  //   onTap: () {
+                  //   },
+                  // ),
                   new IconSlideAction(
                     caption: 'Delete',
                     color: Colors.transparent,

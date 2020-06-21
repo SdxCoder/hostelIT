@@ -62,28 +62,28 @@ class DrawerCustom extends StatelessWidget {
               });
             },
           ),
-          ListTile(
-            leading: Icon(FontAwesomeIcons.table,
-                color: Theme.of(context).iconTheme.color),
-            title: Text(
-              'Manage Tables',
-              style: Theme.of(context).accentTextTheme.subtitle1,
-            ),
-            onTap: () {
-               Modular.to.pushNamed(Routes.manageTables).then((value){
-                Modular.to.pop();
-              });
-            },
-          ),
-          ListTile(
-            leading: Icon(FontAwesomeIcons.book,
-                color: Theme.of(context).iconTheme.color),
-            title: Text(
-              'Reservations',
-              style: Theme.of(context).accentTextTheme.subtitle1,
-            ),
-            onTap: () {},
-          ),
+          // ListTile(
+          //   leading: Icon(FontAwesomeIcons.table,
+          //       color: Theme.of(context).iconTheme.color),
+          //   title: Text(
+          //     'Manage Tables',
+          //     style: Theme.of(context).accentTextTheme.subtitle1,
+          //   ),
+          //   onTap: () {
+          //      Modular.to.pushNamed(Routes.manageQrcodes).then((value){
+          //       Modular.to.pop();
+          //     });
+          //   },
+          // ),
+          // ListTile(
+          //   leading: Icon(FontAwesomeIcons.book,
+          //       color: Theme.of(context).iconTheme.color),
+          //   title: Text(
+          //     'Reservations',
+          //     style: Theme.of(context).accentTextTheme.subtitle1,
+          //   ),
+          //   onTap: () {},
+          // ),
           ListTile(
             leading: Icon(FontAwesomeIcons.qrcode,
                 color: Theme.of(context).iconTheme.color),
@@ -91,7 +91,11 @@ class DrawerCustom extends StatelessWidget {
               'QR Codes',
               style: Theme.of(context).accentTextTheme.subtitle1,
             ),
-            onTap: () {},
+            onTap: () {
+                Modular.to.pushNamed(Routes.manageQrcodes).then((value){
+                Modular.to.pop();
+              });
+            },
           ),
           Spacer(),
           ListTile(

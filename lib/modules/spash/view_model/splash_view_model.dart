@@ -14,9 +14,9 @@ class SplashViewModel extends BaseViewModel {
     setBusy(false);
     if (loggedIn) {
       //_rbacService.getRoleBasedAccess();
-      Modular.to.pushReplacementNamed(Routes.adminHome);
+      Modular.to.pushReplacementNamed(Routes.login);
     } else {
-      Modular.to.pushReplacementNamed(Routes.adminHome);
+      Modular.to.pushReplacementNamed(Routes.scan);
     }
   }
 

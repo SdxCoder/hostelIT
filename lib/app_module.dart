@@ -15,6 +15,7 @@ import 'main.dart';
 import 'modules/home/view/home_view.dart';
 import 'modules/mod-auth/views/forgot_password.dart';
 import 'modules/mod-auth/views/sign_up_view.dart';
+import 'modules/mod-user/mod_user.dart';
 
 
 
@@ -28,7 +29,7 @@ class AppModule extends MainModule {
         Bind((i) => RBACService()),
         Bind((i) => DbService()),
       ];
-
+  
   @override
   Widget get bootstrap => App();
 
@@ -39,6 +40,6 @@ class AppModule extends MainModule {
         Router("/signup", child: (_, args) => SignUpView()),
         Router('/forgotPassword',child: (_, args) => ForgotPasswordView()),
         Router("/adminHome" ,module: AdminModule()),
-       
-      ];
+        Router("/userHome" ,module: UserModule()),
+  ];
 }

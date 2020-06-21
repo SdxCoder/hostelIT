@@ -12,10 +12,11 @@ class Routes{
   static const String menuItems = "$adminHome/menuItems";
   static const String offers = "$adminHome/offers";
   static const String profile = "$adminHome/profile";
-  static const String manageTables = "$adminHome/manageTables";
+  static const String manageQrcodes = "$adminHome/manageQrcodes";
+  static const String editQrcode = "$adminHome/editQrcode";
 
   // user home routes
   static const String userHome = "/userHome";  // user home
- // static const String bookingDetail = "$userHome/bookingDetail/:id";
+ static const String scan = "$userHome/scan";
   
 }

@@ -120,7 +120,9 @@ class _LoginViewState extends State<LoginView> {
             width: media.screenSize.width * 0.7,
             height: 48,
             child: raisedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Modular.to.pushReplacementNamed(Routes.scan);
+                },
                 widget: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [

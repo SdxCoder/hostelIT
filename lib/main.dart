@@ -66,6 +66,10 @@ class App extends StatelessWidget {
                 color: const Color(0xff3e3f68),
                 fontSize: 14
               ),
+              headline6: TextStyle(
+                color: const Color(0xff3e3f68),
+              
+              ),
               caption: TextStyle(
                 color: const Color(0xcc6e7faa),
                 fontSize: 12

@@ -4,43 +4,55 @@ class RoundedCard extends StatelessWidget {
   final Widget content;
   final Color cardColor;
   final double circularRadius;
+   final double width;
+  final double height;
 
   const RoundedCard({
     Key key,
-    this.content, this.cardColor = Colors.white, this.circularRadius = 10.0,
+    this.content, this.cardColor = Colors.white, this.circularRadius = 10.0, this.width, this.height,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-        elevation: 0,
-        color: cardColor,
-        
-        shape:
-            RoundedRectangleBorder(borderRadius: BorderRadius.circular(circularRadius)),
-        child: content);
+    return SizedBox(
+      width: width,
+      height: height,
+          child: Card(
+          elevation: 0,
+          color: cardColor,
+          
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(circularRadius)),
+          child: content),
+    );
   }
 }
 
 class RoundedCardTapable extends StatelessWidget {
   final Function onTap;
   final Widget content;
+  final double width;
+  final double height;
 
   const RoundedCardTapable({
     Key key,
     this.onTap,
-    this.content,
+    this.content, this.width, this.height,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
-      child: Card(
-          elevation: 0,
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
-          child: content),
+      child: SizedBox(
+        width: width,
+        height: height,
+              child: Card(
+            elevation: 0,
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
+            child: content),
+      ),
     );
   }
 }

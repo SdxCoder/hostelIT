@@ -5,21 +5,23 @@ class raisedButton extends StatelessWidget {
   final Widget widget;
   final String btnText;
   final Function onPressed;
+  final Color btnColor;
+  final Color btnTextColor;
 
   const raisedButton({
     Key key,
     this.widget,
     this.btnText,
-    this.onPressed,
+    this.onPressed, this.btnColor, this.btnTextColor = Colors.white,
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return RaisedButton(
         disabledColor: buttonColor.withOpacity(0.5),
         onPressed: onPressed,
-        textColor: Colors.white,
+        textColor: btnTextColor,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-        color: Color(0xff3e3f68),
+        color: btnColor ?? Theme.of(context).primaryColor,
         child:
             widget ?? Text(btnText,));
   }
@@ -29,12 +31,15 @@ class flatButton extends StatelessWidget {
   final Widget widget;
   final String btnText;
   final Function onPressed;
+  final Color btnColor;
+  final Color borderColor;
+  final double borderRadius;
 
   const flatButton({
     Key key,
     this.widget,
     this.btnText,
-    this.onPressed,
+    this.onPressed, this.btnColor = Colors.white, this.borderRadius = 10.0, this.borderColor,
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -42,10 +47,10 @@ class flatButton extends StatelessWidget {
         disabledColor: buttonColor.withOpacity(0.5),
         onPressed: onPressed,
         shape: RoundedRectangleBorder(
-          side: BorderSide(width: 0.5, color: Theme.of(context).buttonColor),
-          borderRadius: BorderRadius.circular(10),
+          side: BorderSide(width: 0.5, color: borderColor ?? Theme.of(context).buttonColor),
+          borderRadius: BorderRadius.circular(borderRadius),
         ),
-        color: Colors.white,
+        color: btnColor,
         textColor: Theme.of(context).buttonColor,
         child:
             widget ?? Text(btnText));

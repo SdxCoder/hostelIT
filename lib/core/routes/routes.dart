@@ -18,5 +18,8 @@ class Routes{
   // user home routes
   static const String userHome = "/userHome";  // user home
  static const String scan = "$userHome/scan";
+ static const String food = "$userHome/food";
+ static const String foodCategory = "$userHome/foodCategory";
+ static const String cart = "$userHome/cart";
   
 }

@@ -49,6 +49,8 @@ export './shared_widgets/empty_list_placeholder.dart';
 export './shared_widgets/search_location_widget.dart';
 export './shared_widgets/drawer.dart';
 export './shared_widgets/popup_menu.dart';
+export './shared_widgets/counter.dart';
+
 // utils
 export './utils/colors.dart';
 export './utils/spacing.dart';

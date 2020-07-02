@@ -12,113 +12,118 @@ class FoodView extends StatelessWidget {
       viewModelBuilder: () => FoodsViewModel(),
       builder: (context, model, child) => ResponsiveBuilder(
         builder: (context, media) => Scaffold(
-          body: SizedBox(
-            height: MediaQuery.of(context).size.height,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Expanded(
-                  child: Stack(
-                    children: [
-                      Container(
-                        decoration: BoxDecoration(
-                            image: DecorationImage(
-                                fit: BoxFit.cover,
-                                image: AssetImage(
-                                  'assets/images/top_restorant.png',
-                                ))),
-                      ),
-                      SizedBox(
-                        height: kBottomNavigationBarHeight,
-                        child: buildAppBar(
-                          backgroundColor: Colors.white,
-                          centerTitle: true,
-                          iconThemeData: IconThemeData(
-                              color: Theme.of(context).primaryColor),
-                          title: Image.asset(
-                            'assets/images/logo_black.png',
-                            width: 100,
+           drawer: isUserLoggedIn == false ? 
+     null : 
+    DrawerCustom(),
+          body: SafeArea(
+                      child: SizedBox(
+              height: MediaQuery.of(context).size.height,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Expanded(
+                    child: Stack(
+                      children: [
+                        Container(
+                          decoration: BoxDecoration(
+                              image: DecorationImage(
+                                  fit: BoxFit.cover,
+                                  image: AssetImage(
+                                    'assets/images/top_restorant.png',
+                                  ))),
+                        ),
+                        SizedBox(
+                          height: kBottomNavigationBarHeight,
+                          child: buildAppBar(
+                            backgroundColor: Colors.white,
+                            centerTitle: true,
+                            iconThemeData: IconThemeData(
+                                color: Theme.of(context).primaryColor),
+                            title: Image.asset(
+                              'assets/images/logo_black.png',
+                              width: 100,
+                            ),
+                            automaticallyImplyLeading: true,
                           ),
-                          automaticallyImplyLeading: true,
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
-                ),
-                SizedBox(height: 16),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        'Veggie Best',
-                        style: Theme.of(context)
-                            .accentTextTheme
-                             .headline6
-                            .copyWith(
-                              color: Theme.of(context).primaryColor,
-                              fontWeight: FontWeight.bold),
-                      ),
-                      Text(
-                        'Mesa 8',
-                        style: Theme.of(context).accentTextTheme.bodyText1,
-                      ),
-                    ],
+                  SizedBox(height: 16),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          'Veggie Best',
+                          style: Theme.of(context)
+                              .accentTextTheme
+                               .headline6
+                              .copyWith(
+                                color: Theme.of(context).primaryColor,
+                                fontWeight: FontWeight.bold),
+                        ),
+                        Text(
+                          'Mesa 8',
+                          style: Theme.of(context).accentTextTheme.bodyText1,
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-               Divider(
-                 height: 32,
-                 thickness: 0.5,
-               ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        'Menú y Platos',
-                        style: Theme.of(context)
-                            .accentTextTheme
-                            .subtitle1
-                            .copyWith(
-                             
-                              fontWeight: FontWeight.bold),
-                      ),
-                      GestureDetector(
-                        onTap: () {
+                 Divider(
+                   height: 32,
+                   thickness: 0.5,
+                 ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          'Menú y Platos',
+                          style: Theme.of(context)
+                              .accentTextTheme
+                              .subtitle1
+                              .copyWith(
+                               
+                                fontWeight: FontWeight.bold),
+                        ),
+                        GestureDetector(
+                          onTap: () {
+                              Modular.to.pushNamed(Routes.foodCategory);
+                          },
+                          child: Text(
+                            'Ver Todos(32)',
+                            style: Theme.of(context).accentTextTheme.caption,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(height: 16),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                    child: _buildFoodTile(media),
+                  ),
+                  SizedBox(height: 16),
+                  Center(
+                    child: SizedBox(
+                      width: media.screenSize.width * 0.7,
+                      height: 48,
+                      child: raisedButton(
+                          widget: Text(
+                            "Todos los Platos",
+                          ),
+                          onPressed: () {
                             Modular.to.pushNamed(Routes.foodCategory);
-                        },
-                        child: Text(
-                          'Ver Todos(32)',
-                          style: Theme.of(context).accentTextTheme.caption,
-                        ),
-                      ),
-                    ],
+                          }),
+                    ),
                   ),
-                ),
-                SizedBox(height: 16),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                  child: _buildFoodTile(media),
-                ),
-                SizedBox(height: 16),
-                Center(
-                  child: SizedBox(
-                    width: media.screenSize.width * 0.7,
-                    height: 48,
-                    child: raisedButton(
-                        widget: Text(
-                          "Todos los Platos",
-                        ),
-                        onPressed: () {
-                          Modular.to.pushNamed(Routes.foodCategory);
-                        }),
-                  ),
-                ),
-                SizedBox(height: 16),
-              ],
+                  SizedBox(height: 16),
+                ],
+              ),
             ),
           ),
         ),

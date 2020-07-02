@@ -17,3 +17,5 @@ class DatePickerType{
    static String range = "By Range";
    static String week = "By Week";
 }
+
+bool isUserLoggedIn = false;

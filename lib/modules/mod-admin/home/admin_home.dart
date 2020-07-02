@@ -14,7 +14,8 @@ class _AdminHomeState extends State<AdminHome> {
 
   List<Widget> _tabs = [
     OrderView(),
-    NotificationsView()
+    NotificationsView(),
+  
   ];
   @override
   Widget build(BuildContext context) {
@@ -25,8 +26,8 @@ class _AdminHomeState extends State<AdminHome> {
         navItems: [
           BottomNavigationBarItem(
             icon: Icon(Icons.home,), title: Text('Home', style: Theme.of(context).accentTextTheme.bodyText2,)),
-          BottomNavigationBarItem(icon: Icon(Icons.notifications,), title: Text('Notifications', style: Theme.of(context).accentTextTheme.bodyText2,))
-        
+          BottomNavigationBarItem(icon: Icon(Icons.notifications,), title: Text('Notifications', style: Theme.of(context).accentTextTheme.bodyText2,)),
+           
         ],
         currentIndex: _currentIndex,
         onTap: (index){

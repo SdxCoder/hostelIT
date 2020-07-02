@@ -1,3 +1,4 @@
+import 'package:client/core/core.dart';
 import 'package:client/modules/mod-admin/menu/views/add_category.dart';
 import 'package:client/modules/mod-admin/menu/views/add_menuItem_category.dart';
 import 'package:client/modules/mod-admin/menu/views/menu_view.dart';
@@ -17,6 +18,7 @@ class AdminModule extends ChildModule{
   List<Bind> get binds => [
      // Bind((i) => LessonService()),
      // Bind((i) => BookingService()),
+     
   ];
 
   @override

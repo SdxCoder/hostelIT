@@ -99,40 +99,41 @@ class _SignUpViewState extends State<SignUpView> {
                 height: 50,
               ),
               CircleAvatar(
-                      backgroundColor: Colors.white.withOpacity(0.2),
+                backgroundColor: Colors.white.withOpacity(0.2),
+                radius: 70,
+                child: Stack(
+                  children: [
+                    CircleAvatar(
                       radius: 70,
-                      child: Stack(
-                        children: [
-                          CircleAvatar(
-                            radius: 70,
-                            backgroundColor: Colors.white.withOpacity(0),
-                          ),
-                          Center(
-                              child: Icon(
-                            (model.role == Role.user) ? Icons.person : Icons.restaurant,
-                            color: Colors.white,
-                            size: 50,
-                          )),
-                          Positioned(
-                              bottom: 4,
-                              right: 8,
-                              child: GestureDetector(
-                                  onTap: () {
-                                    if(model.role == Role.user){
-                                       print("upload user pic");
-                                    }else{
-                                      print("upload restaurant pic");
-                                    }
-                                   
-                                  },
-                                  child: Icon(
-                                    Icons.photo_camera,
-                                    size: 30,
-                                    color: Colors.white,
-                                  )))
-                        ],
-                      ),
+                      backgroundColor: Colors.white.withOpacity(0),
                     ),
+                    Center(
+                        child: Icon(
+                      (model.role == Role.user)
+                          ? Icons.person
+                          : Icons.restaurant,
+                      color: Colors.white,
+                      size: 50,
+                    )),
+                    Positioned(
+                        bottom: 4,
+                        right: 8,
+                        child: GestureDetector(
+                            onTap: () {
+                              if (model.role == Role.user) {
+                                print("upload user pic");
+                              } else {
+                                print("upload restaurant pic");
+                              }
+                            },
+                            child: Icon(
+                              Icons.photo_camera,
+                              size: 30,
+                              color: Colors.white,
+                            )))
+                  ],
+                ),
+              ),
               SizedBox(
                 height: 50,
               ),
@@ -166,7 +167,6 @@ class _SignUpViewState extends State<SignUpView> {
                         prefixIconData: Icons.location_city,
                       ),
                     ),
-            
               (model.role == Role.user)
                   ? Offstage()
                   : SizedBox(
@@ -268,14 +268,15 @@ class _SignUpViewState extends State<SignUpView> {
                           widget: Text(
                             "Continuar Registro",
                           ),
-                          onPressed: () {
-                     
-                            Modular.to.pushReplacementNamed(Routes.adminHome);
+                          onPressed: () async {
+                            await model
+                                .signUpWithEmailAndPassword(
+                                    email: "email", password: "password")
+                                .then((value) => Modular.to
+                                    .pushReplacementNamed(Routes.adminHome));
                           }),
                     ),
-              SizedBox(
-                height: 50,
-              ),
+              SizedBox(height: 50),
               GestureDetector(
                 onTap: () {
                   Modular.to.pushReplacementNamed(Routes.login);

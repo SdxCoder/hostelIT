@@ -15,14 +15,16 @@ class MapView extends StatelessWidget {
       //   ),
       //   title: Image.asset('assets/images/logo_black.png',width: 100,), automaticallyImplyLeading: true,),
 
-      body: SearchLocationWidget(
-          decoration: InputDecoration(hintText: 'Search'),
-          showDebugInformation: true,
-          onLocationChanged: (value) {
-        print("SearchLocationWidget picked : $value");
-          Modular.to.pop();
-          },
-        ),
+      body: SafeArea(
+              child: SearchLocationWidget(
+            decoration: InputDecoration(hintText: 'Search'),
+            showDebugInformation: true,
+            onLocationChanged: (value) {
+          print("SearchLocationWidget picked : $value");
+            Modular.to.pop();
+            },
+          ),
+      ),
     );
   }
 }

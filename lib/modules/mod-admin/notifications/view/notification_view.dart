@@ -30,7 +30,7 @@ class NotificationsView extends StatelessWidget {
               Text('Notificaciones',
                   style: Theme.of(context)
                       .accentTextTheme
-                      .headline1
+                      .headline6
                      ),
               SizedBox(height: 16),
               _buildNotifications(model),

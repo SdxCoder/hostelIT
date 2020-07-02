@@ -16,9 +16,12 @@ class AuthService {
   CurrentUser get currentUser => _currentUser;
 
   Future signUpWithEmailPassword({email, password, firstName, lastName, DateTime dob, phoneNo}) async {
+    _currentUser = CurrentUser.create(
+      user: User(uid: "a", role: Role.admin));
     try {
       final authResult = await _auth.createUserWithEmailAndPassword(
           email: email, password: password);
+          
        // Create nd Populate current user
        User user =  User(
             uid: authResult.user.uid,
@@ -34,7 +37,8 @@ class AuthService {
           );
           await _userService.createUser(
          user);
-      await _populateCurrentUser(authResult.user);
+      
+     // await _populateCurrentUser(authResult.user);
       print("User : " + _currentUser.user.email);
       return authResult.user;
     } catch (e) {
@@ -167,9 +171,16 @@ class AuthService {
   }
 
   Future _populateCurrentUser(FirebaseUser firebaseUser) async {
+   
     if (firebaseUser != null) {
       User user = await _userService.getUser(firebaseUser.uid);
       _currentUser = CurrentUser.create(firebaseUser: firebaseUser, user: user);
     }
+
+     _currentUser = CurrentUser.create(
+      user: User(uid: "a", role: Role.user)
+    );
+
+    
   }
 }

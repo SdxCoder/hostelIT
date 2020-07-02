@@ -111,7 +111,11 @@ class _LoginViewState extends State<LoginView> {
                 widget: Text(
                   "Entrar",
                 ),
-                onPressed: () {}),
+                onPressed: () async {
+                  isUserLoggedIn = true;
+                  await model.signInWithEmailAndPassword("email", "password");
+                 //   Modular.to.pushReplacementNamed(Routes.scan);
+                }),
           ),
           SizedBox(
             height: 8,
@@ -121,7 +125,7 @@ class _LoginViewState extends State<LoginView> {
             height: 48,
             child: raisedButton(
                 onPressed: () {
-                  Modular.to.pushReplacementNamed(Routes.scan);
+                  Modular.to.pushReplacementNamed(Routes.userHome);
                 },
                 widget: Row(
                   mainAxisSize: MainAxisSize.min,

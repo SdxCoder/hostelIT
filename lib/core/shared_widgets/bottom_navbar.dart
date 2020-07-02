@@ -25,10 +25,12 @@ class BottomNavBar extends StatelessWidget {
         ),
         color: Colors.white,
         child: BottomNavigationBar(
+        
             backgroundColor: Colors.transparent,
             elevation: 0,
             currentIndex: currentIndex,
             iconSize: 16,
+            unselectedItemColor: Theme.of(context).accentColor,
             selectedItemColor: Theme.of(context).primaryColor,
             onTap: onTap,
             items: navItems),

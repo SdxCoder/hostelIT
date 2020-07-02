@@ -1,5 +1,6 @@
+
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/screenutil.dart';
+
 
 Widget buildAppBar(
     {BuildContext context,
@@ -30,12 +31,18 @@ Widget buildAppBar(
     ),
     actionsIconTheme: IconThemeData(
       color:Colors.white,
-     // size: Theme.of(context).iconTheme.size
     ),
     automaticallyImplyLeading: automaticallyImplyLeading,
     bottom: bottom,
-    actions: <Widget>[
-      ...actions,
-    ],
+    actions: actions 
+    // ??  <Widget>[
+      // Modular.get<AuthService>().currentUser.user != null ? 
+      // IconButton(
+      //   color: const Color(0xff3e3f68),
+      //   icon: Icon(Icons.person), onPressed: (){
+      //   Modular.to.pushNamed(Routes.profile);
+      // })
+      // : Offstage() 
+    // ],
   );
 }

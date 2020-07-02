@@ -1,4 +1,5 @@
 
+import 'package:client/core/core.dart';
 import 'package:client/modules/mod-user/scan/views/scan_view.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
@@ -12,6 +13,7 @@ class UserModule extends ChildModule {
   List<Bind> get binds => [
         // Bind((i) => LessonService()),
        // Bind((i) => BookingService()),
+       
       ];
 
   @override

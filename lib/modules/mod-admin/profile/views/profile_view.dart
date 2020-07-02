@@ -1,9 +1,10 @@
 import 'package:client/core/core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class ProfileView extends StatelessWidget {
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -15,7 +16,7 @@ class ProfileView extends StatelessWidget {
           'assets/images/logo_black.png',
           width: 100,
         ),
-        automaticallyImplyLeading: true,
+        automaticallyImplyLeading: Modular.get<AuthService>().currentUser.user.role  == Role.admin ? true : false,
         actions: [
           PopupMenu(
             iconColor: Theme.of(context).primaryColor,
@@ -72,6 +73,7 @@ class ProfileView extends StatelessWidget {
           SizedBox(height: 50),
           Form(
             child: Column(mainAxisSize: MainAxisSize.min, children: [
+              Modular.get<AuthService>().currentUser.user.role  == Role.admin ?  
               SizedBox(
                 width: MediaQuery.of(context).size.width * 0.7,
                 child: TextFieldCustom(
@@ -83,15 +85,41 @@ class ProfileView extends StatelessWidget {
                   prefixIconColor: Theme.of(context).iconTheme.color,
                   prefixIconData: Icons.person,
                 ),
-              ),
-             
-               SizedBox(height: 16),
-              SizedBox(
+              ): 
+               SizedBox(
                 width: MediaQuery.of(context).size.width * 0.7,
                 child: TextFieldCustom(
                   textColor: Theme.of(context).accentColor,
                   backgroundColor: Colors.white,
-                  hintText: 'Sucursal del Restaurante',
+                  hintText: 'Nombre',
+                  hintTextColor: Theme.of(context).accentColor,
+                  cursorColor: Theme.of(context).primaryColor,
+                  prefixIconColor: Theme.of(context).iconTheme.color,
+                  prefixIconData: Icons.person,
+                ),
+              )
+              ,
+             
+               SizedBox(height: 16),
+              Modular.get<AuthService>().currentUser.user.role  == Role.admin ?
+               SizedBox(
+                width: MediaQuery.of(context).size.width * 0.7,
+                child: TextFieldCustom(
+                  textColor: Theme.of(context).accentColor,
+                  backgroundColor: Colors.white,
+                  hintText: 'Email',
+                  hintTextColor: Theme.of(context).accentColor,
+                  cursorColor: Theme.of(context).primaryColor,
+                  prefixIconColor: Theme.of(context).iconTheme.color,
+                  prefixIconData: Icons.email,
+                ),
+              ) :
+               SizedBox(
+                width: MediaQuery.of(context).size.width * 0.7,
+                child: TextFieldCustom(
+                  textColor: Theme.of(context).accentColor,
+                  backgroundColor: Colors.white,
+                  hintText: 'Email',
                   hintTextColor: Theme.of(context).accentColor,
                   cursorColor: Theme.of(context).primaryColor,
                   prefixIconColor: Theme.of(context).iconTheme.color,
@@ -106,7 +134,9 @@ class ProfileView extends StatelessWidget {
               width: MediaQuery.of(context).size.width * 0.7,
               child: raisedButton(
                 btnText: 'Actualizar',
-                onPressed: () {},
+                onPressed: () {
+                  // role based action
+                },
               )),
           SizedBox(height: 50),
         ]),

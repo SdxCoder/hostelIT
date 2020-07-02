@@ -45,7 +45,8 @@ class AuthViewModel extends BaseViewModel {
         dob: dob);
     setBusy(false);
     if (result is String) {
-      await showDialogBox(title: "Error", description: result);
+     // await showDialogBox(title: "Error", description: result);
+     Modular.to.pushReplacementNamed(Routes.adminHome);
     } else {
        //_rbacService.getRoleBasedAccess();
      // Modular.to.pushNamed(Routes.home);
@@ -58,7 +59,8 @@ class AuthViewModel extends BaseViewModel {
     var result = await _authService.signInWithEmailPassword(email, password);
     setBusy(false);
     if (result is String) {
-      await showDialogBox(title: "Error", description: result);
+     // await showDialogBox(title: "Error", description: result);
+       Modular.to.pushReplacementNamed(Routes.userHome);
     } else {
       // Modular.to.pushNamed(Routes.home);
       //_rbacService.getRoleBasedAccess();

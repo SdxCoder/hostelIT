@@ -53,7 +53,7 @@ class _CounterState extends State<Counter> {
             padding: EdgeInsets.zero,
             iconSize: 10,
             icon: Icon(
-              Icons.add,
+              FontAwesomeIcons.plus,
               size: 10,
               color: Theme.of(context).primaryColor,
             ),

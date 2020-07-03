@@ -16,9 +16,10 @@ class ProfileView extends StatelessWidget {
           'assets/images/logo_black.png',
           width: 100,
         ),
-        automaticallyImplyLeading: Modular.get<AuthService>().currentUser.user.role  == Role.admin ? true : false,
+        automaticallyImplyLeading: true,
+        
         actions: [
-          PopupMenu(
+         isUserLoggedIn == false ?  Offstage(): PopupMenu(
             iconColor: Theme.of(context).primaryColor,
             collection: <String>[
               'Change Password'
@@ -31,10 +32,17 @@ class ProfileView extends StatelessWidget {
           )
         ]
       ),
+      drawer: DrawerCustom(),
       body: Container(
         width: MediaQuery.of(context).size.width,
         padding: const EdgeInsets.all(16.0),
-        child: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
+        child: isUserLoggedIn == false ?  
+        Center(
+          child:raisedButton(btnText: "Register",onPressed: (){},)
+        )
+        :
+        
+        Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
           SizedBox(height: 16),
           Text('Editar Perfil',
               style: Theme.of(context)

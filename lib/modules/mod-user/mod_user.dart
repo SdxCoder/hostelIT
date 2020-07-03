@@ -1,5 +1,7 @@
 
 
+import 'package:client/modules/mod-user/favourites/favourite_view.dart';
+import 'package:client/modules/mod-user/restaurant/restaurant_deatils_view.dart';
 import 'package:client/modules/mod-user/scan/views/scan_view.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
@@ -25,6 +27,8 @@ class UserModule extends ChildModule {
         Router('/foodCategory', child: (_, args) => FoodCategoryView()),
         Router('/cart', child: (_, args) => CartView()),
         Router('/allCategoryView', child: (_, args) => AllCategoriesView()),
+          Router('/favourites', child: (_, args) => FavouritesView()),
+          Router('/restaurantDetails', child: (_, args) => RestaurantDeatilsView()),
       ];
 
   static Inject get to => Inject<UserModule>.of();

@@ -1,4 +1,3 @@
-import 'dart:math';
 
 import 'package:client/core/core.dart';
 import 'package:flutter/material.dart';
@@ -8,7 +7,6 @@ import 'package:stacked/stacked.dart';
 import 'home_view_model.dart';
 
 class AllCategoriesView extends StatelessWidget {
-  TextEditingController _searchController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -45,15 +43,6 @@ class AllCategoriesView extends StatelessWidget {
                 )));
   }
 
-  List colors = [
-    Colors.green,
-    Colors.yellow,
-    Colors.orange,
-    Colors.blue,
-    Colors.brown,
-  ];
-
-  Random random = new Random();
 
   Widget _buildCategoryTile(HomeViewModel model, SizingInformation media) {
     return ListView.builder(

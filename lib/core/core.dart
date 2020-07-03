@@ -16,6 +16,7 @@ export './models/order.dart';
 export './models/category.dart';
 export './models/menu_item.dart';
 export './models/notifications.dart';
+export './models/favourites.dart';
 
 
 

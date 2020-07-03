@@ -5,6 +5,8 @@ import 'package:flutter_modular/flutter_modular.dart';
 class ProfileView extends StatelessWidget {
 
 
+  final User user = Modular.get<AuthService>().currentUser.user;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,9 +19,8 @@ class ProfileView extends StatelessWidget {
           width: 100,
         ),
         automaticallyImplyLeading: true,
-        
         actions: [
-         isUserLoggedIn == false ?  Offstage(): PopupMenu(
+         (isUserLoggedIn == false && user.role == Role.user)  ?  Offstage(): PopupMenu(
             iconColor: Theme.of(context).primaryColor,
             collection: <String>[
               'Change Password'
@@ -32,11 +33,11 @@ class ProfileView extends StatelessWidget {
           )
         ]
       ),
-      drawer: DrawerCustom(),
+      drawer:user.role == Role.user ?  DrawerCustom() : null,
       body: Container(
         width: MediaQuery.of(context).size.width,
         padding: const EdgeInsets.all(16.0),
-        child: isUserLoggedIn == false ?  
+        child: (isUserLoggedIn == false && user.role == Role.user) ?  
         Center(
           child:raisedButton(btnText: "Register",onPressed: (){},)
         )

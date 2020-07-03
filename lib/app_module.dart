@@ -1,7 +1,6 @@
 
-import 'package:client/modules/mod-admin/home/admin_home.dart';
 import 'package:client/modules/mod-admin/mod_admin.dart';
-import 'package:client/modules/mod-admin/orders/views/order_details_view.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
@@ -9,10 +8,9 @@ import 'package:client/modules/mod-auth/views/login_view.dart';
 import 'package:client/modules/spash/view/splash_screen.dart';
 
 import 'core/core.dart';
-import 'core/shared_service/db_service.dart';
 import 'core/shared_service/form_validation_service.dart';
 import 'main.dart';
-import 'modules/home/view/home_view.dart';
+
 import 'modules/mod-auth/views/forgot_password.dart';
 import 'modules/mod-auth/views/sign_up_view.dart';
 import 'modules/mod-user/mod_user.dart';
@@ -27,7 +25,7 @@ class AppModule extends MainModule {
         Bind((i) => AuthService()),
         Bind((i) => UserService()),
         Bind((i) => RBACService()),
-        Bind((i) => DbService()),
+       
       ];
   
   @override

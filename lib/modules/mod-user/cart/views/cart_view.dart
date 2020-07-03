@@ -13,9 +13,6 @@ class CartView extends StatelessWidget {
       viewModelBuilder: () => CartViewModel(),
       builder: (context, model, child) => ResponsiveBuilder(
         builder: (context, media) => Scaffold(
-           drawer: isUserLoggedIn == false ? 
-     null : 
-    DrawerCustom(),
             appBar: buildAppBar(
               backgroundColor: Colors.white,
               centerTitle: true,
@@ -80,87 +77,92 @@ class CartView extends StatelessWidget {
                             ]),
                             SizedBox(height: 20),
                           ]),
-                      (model.order.menuItems.isEmpty) ? Offstage() : ConfigurableExpansionTile(
-                          header: Expanded(
-                            child: Container(
-                              color: HexColor('ececee'),
-                              child: Padding(
-                                padding: const EdgeInsets.all(16.0),
-                                child: Text(
-                                  'Cuenta',
-                                  style: Theme.of(context)
-                                      .accentTextTheme
-                                      .subtitle1,
-                                ),
-                              ),
-                            ),
-                          ),
-                          headerBackgroundColorStart: HexColor('ececee'),
-                          animatedWidgetFollowingHeader: Padding(
-                            padding: const EdgeInsets.all(16.0),
-                            child: const Icon(
-                              Icons.expand_more,
-                              color: const Color(0xff3e3f68),
-                            ),
-                          ),
-                          children: [
-                            SizedBox(height: 20),
-                            ...model.order.menuItems.map<Widget>(
-                                (e) => _buildMenuSelector(context, media)),
-                            SizedBox(height: 16),
-                            ButtonBar(
-                              children: [
-                                Container(
-                                  height: 35,
-                                  padding: EdgeInsets.symmetric(horizontal: 16),
-                                  decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(6),
-                                      border: Border.all(
-                                          width: 0.5,
-                                          color: HexColor('d3d3d3'))),
-                                  child: Center(
-                                    child: Text('25.95\$',
-                                        style: Theme.of(context)
-                                            .accentTextTheme
-                                            .subtitle2
-                                            .copyWith(
-                                                fontWeight: FontWeight.bold)),
+                      (model.order.menuItems.isEmpty)
+                          ? Offstage()
+                          : ConfigurableExpansionTile(
+                              header: Expanded(
+                                child: Container(
+                                  color: HexColor('ececee'),
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(16.0),
+                                    child: Text(
+                                      'Cuenta',
+                                      style: Theme.of(context)
+                                          .accentTextTheme
+                                          .subtitle1,
+                                    ),
                                   ),
                                 ),
-                              ],
-                            ),
-                            SizedBox(height: 16),
-                            Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 16.0),
-                              child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    SizedBox(
-                                      width: 130,
-                                      child: raisedButton(
-                                        btnColor: HexColor('d3d3d3'),
-                                        btnText: 'Pedir Cuenta',
-                                        btnTextColor:
-                                            Theme.of(context).primaryColor,
-                                        onPressed: () {},
+                              ),
+                              headerBackgroundColorStart: HexColor('ececee'),
+                              animatedWidgetFollowingHeader: Padding(
+                                padding: const EdgeInsets.all(16.0),
+                                child: const Icon(
+                                  Icons.expand_more,
+                                  color: const Color(0xff3e3f68),
+                                ),
+                              ),
+                              children: [
+                                  SizedBox(height: 20),
+                                  ...model.order.menuItems.map<Widget>((e) =>
+                                      _buildMenuSelector(context, media)),
+                                  SizedBox(height: 16),
+                                  ButtonBar(
+                                    children: [
+                                      Container(
+                                        height: 35,
+                                        padding: EdgeInsets.symmetric(
+                                            horizontal: 16),
+                                        decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(6),
+                                            border: Border.all(
+                                                width: 0.5,
+                                                color: HexColor('d3d3d3'))),
+                                        child: Center(
+                                          child: Text('25.95\$',
+                                              style: Theme.of(context)
+                                                  .accentTextTheme
+                                                  .subtitle2
+                                                  .copyWith(
+                                                      fontWeight:
+                                                          FontWeight.bold)),
+                                        ),
                                       ),
-                                    ),
-                                    SizedBox(
-                                      width: 130,
-                                      child: raisedButton(
-                                        btnColor: HexColor('d3d3d3'),
-                                        btnText: 'Pagar',
-                                        btnTextColor:
-                                            Theme.of(context).primaryColor,
-                                        onPressed: () {},
-                                      ),
-                                    ),
-                                  ]),
-                            ),
-                            SizedBox(height: 20),
-                          ]),
+                                    ],
+                                  ),
+                                  SizedBox(height: 16),
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 16.0),
+                                    child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          SizedBox(
+                                            width: 130,
+                                            child: raisedButton(
+                                              btnColor: HexColor('d3d3d3'),
+                                              btnText: 'Pedir Cuenta',
+                                              btnTextColor: Theme.of(context)
+                                                  .primaryColor,
+                                              onPressed: () {},
+                                            ),
+                                          ),
+                                          SizedBox(
+                                            width: 130,
+                                            child: raisedButton(
+                                              btnColor: HexColor('d3d3d3'),
+                                              btnText: 'Pagar',
+                                              btnTextColor: Theme.of(context)
+                                                  .primaryColor,
+                                              onPressed: () {},
+                                            ),
+                                          ),
+                                        ]),
+                                  ),
+                                  SizedBox(height: 20),
+                                ]),
                     ]),
                   ),
                 ],

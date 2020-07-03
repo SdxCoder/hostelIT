@@ -1,5 +1,4 @@
 import 'package:client/core/core.dart';
-import 'package:client/modules/mod-user/foods/view_models/foods_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:responsive_builder/responsive_builder.dart';
@@ -24,7 +23,8 @@ class RestaurantDeatilsView extends StatelessWidget {
                         decoration: BoxDecoration(
                             image: DecorationImage(
                                 fit: BoxFit.cover,
-                                colorFilter: ColorFilter.mode(Colors.black87, BlendMode.darken),
+                                // colorFilter: ColorFilter.mode(
+                                //     Colors.black87, BlendMode.softLight),
                                 image: AssetImage(
                                   'assets/images/top_restorant.png',
                                 ))),
@@ -46,7 +46,7 @@ class RestaurantDeatilsView extends StatelessWidget {
                       Positioned(
                         top: kBottomNavigationBarHeight + 16,
                         right: 16,
-                                                child: IconButton(
+                        child: IconButton(
                           icon: Icon(Icons.favorite_border),
                           onPressed: () {},
                         ),
@@ -82,16 +82,13 @@ class RestaurantDeatilsView extends StatelessWidget {
                         children: [
                           Text(
                             'Abierto Horario: ',
-                            style: Theme.of(context)
-                                .accentTextTheme
-                                .caption,
-                                
+                            style: Theme.of(context).accentTextTheme.bodyText2,
                           ),
                           Text(
                             '9:30 a 23:30',
                             style: Theme.of(context)
                                 .accentTextTheme
-                                .bodyText1
+                                .bodyText2
                                 .copyWith(color: Colors.red),
                           ),
                         ],
@@ -114,15 +111,6 @@ class RestaurantDeatilsView extends StatelessWidget {
                             .accentTextTheme
                             .subtitle1
                             .copyWith(fontWeight: FontWeight.bold),
-                      ),
-                      GestureDetector(
-                        onTap: () {
-                          Modular.to.pushNamed(Routes.foodCategory);
-                        },
-                        child: Text(
-                          'Ver Todos(32)',
-                          style: Theme.of(context).accentTextTheme.caption,
-                        ),
                       ),
                     ],
                   ),

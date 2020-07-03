@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../core.dart';
 
 class DropDownField extends StatelessWidget {
   final String title;

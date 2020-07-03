@@ -1,4 +1,3 @@
-
 import 'package:client/core/core.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_builder/responsive_builder.dart';
@@ -7,14 +6,13 @@ import 'package:stacked/stacked.dart';
 import 'home_view_model.dart';
 
 class AllCategoriesView extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<HomeViewModel>.reactive(
         viewModelBuilder: () => HomeViewModel(),
         builder: (context, model, child) => ResponsiveBuilder(
             builder: (context, media) => Scaffold(
-                  drawer: isUserLoggedIn == false ? null : DrawerCustom(),
+                  //   drawer: isUserLoggedIn == false ? null : DrawerCustom(),
                   appBar: buildAppBar(
                     backgroundColor: Colors.white,
                     centerTitle: true,
@@ -42,7 +40,6 @@ class AllCategoriesView extends StatelessWidget {
                   ),
                 )));
   }
-
 
   Widget _buildCategoryTile(HomeViewModel model, SizingInformation media) {
     return ListView.builder(
@@ -72,9 +69,9 @@ class AllCategoriesView extends StatelessWidget {
                         begin: Alignment(0.0, -1.0),
                         end: Alignment(0.0, 1.0),
                         colors: [
-                          const Color(0xff3e3f68),
-                          const Color(0xff3e3f68),
                           const Color(0xcc6e7faa),
+                          const Color(0xcc6e7faa),
+                          const Color(0xff3e3f68),
                         ],
                         stops: [0.0, 0.176, 1.0],
                       ),

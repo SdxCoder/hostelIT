@@ -13,9 +13,7 @@ class FoodCategoryView extends StatelessWidget {
       viewModelBuilder: () => FoodsViewModel(),
       builder: (context, model, child) => ResponsiveBuilder(
         builder: (context, media) => Scaffold(
-           drawer: isUserLoggedIn == false ? 
-     null : 
-    DrawerCustom(),
+         
             appBar: buildAppBar(
               backgroundColor: Colors.white,
               centerTitle: true,

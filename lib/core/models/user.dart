@@ -1,6 +1,8 @@
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
 
+
+// Change this model class as per restaurant and client data
 class User extends Equatable {
   final String uid;
   final String firstName;

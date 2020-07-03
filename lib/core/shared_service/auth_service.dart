@@ -16,8 +16,12 @@ class AuthService {
   CurrentUser get currentUser => _currentUser;
 
   Future signUpWithEmailPassword({email, password, firstName, lastName, DateTime dob, phoneNo}) async {
+    
+    // remove this and populate user on the basis of auth result, this is just to mock
+    // user interface role base behviour
     _currentUser = CurrentUser.create(
       user: User(uid: "a", role: Role.admin));
+    
     try {
       final authResult = await _auth.createUserWithEmailAndPassword(
           email: email, password: password);
@@ -176,7 +180,8 @@ class AuthService {
       User user = await _userService.getUser(firebaseUser.uid);
       _currentUser = CurrentUser.create(firebaseUser: firebaseUser, user: user);
     }
-
+    // remove this code below and populate user on the basis of auth result, this is just to mock
+    // user interface role base behviour
      _currentUser = CurrentUser.create(
       user: User(uid: "a", role: Role.user)
     );

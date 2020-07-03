@@ -1,4 +1,3 @@
-import 'dart:math';
 
 import 'package:client/core/core.dart';
 import 'package:flutter/material.dart';
@@ -81,15 +80,7 @@ class Home extends StatelessWidget {
                 )));
   }
 
-  List colors = [
-    Colors.green,
-    Colors.yellow,
-    Colors.orange,
-    Colors.blue,
-    Colors.brown,
-  ];
 
-  Random random = new Random();
 
   Widget _buildCategoryTile(HomeViewModel model, SizingInformation media) {
     return GridView.count(
@@ -119,11 +110,12 @@ class Home extends StatelessWidget {
                     begin: Alignment(0.0, -1.0),
                     end: Alignment(0.0, 1.0),
                     colors: [
-                      const Color(0xff3e3f68),
-                      const Color(0xff3e3f68),
+                     
+                     const Color(0xcc6e7faa),
                       const Color(0xcc6e7faa),
+                       const Color(0xff3e3f68),
                     ],
-                    stops: [0.0, 0.176, 1.0],
+                    stops: [0.0, 0.17, 1.0],
                   ),
                 ),
               ),
@@ -157,7 +149,9 @@ class Home extends StatelessWidget {
         shrinkWrap: true,
         itemBuilder: (BuildContext context, int index) {
           return RoundedCardTapable(
-            onTap: () {},
+            onTap: () {
+              Modular.to.pushNamed(Routes.restaurantDetails);
+            },
             content: Column(
               children: [
                 Stack(

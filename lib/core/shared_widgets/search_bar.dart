@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:client/core/utils/colors.dart';
+
 import 'package:responsive_builder/responsive_builder.dart';
-import 'package:client/core/utils/typography.dart';
+
 
 class SearchBar extends StatefulWidget {
   final TextEditingController controller;

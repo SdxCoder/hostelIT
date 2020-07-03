@@ -12,9 +12,7 @@ class FoodView extends StatelessWidget {
       viewModelBuilder: () => FoodsViewModel(),
       builder: (context, model, child) => ResponsiveBuilder(
         builder: (context, media) => Scaffold(
-           drawer: isUserLoggedIn == false ? 
-     null : 
-    DrawerCustom(),
+          
           body: SafeArea(
                       child: SizedBox(
               height: MediaQuery.of(context).size.height,

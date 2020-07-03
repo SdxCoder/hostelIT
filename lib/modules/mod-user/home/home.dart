@@ -1,5 +1,6 @@
+import 'dart:math';
+
 import 'package:client/core/core.dart';
-import 'package:client/modules/mod-user/foods/view_models/foods_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:responsive_builder/responsive_builder.dart';
@@ -16,7 +17,7 @@ class Home extends StatelessWidget {
         viewModelBuilder: () => HomeViewModel(),
         builder: (context, model, child) => ResponsiveBuilder(
             builder: (context, media) => Scaffold(
-                  drawer: isUserLoggedIn == false ? null : DrawerCustom(),
+                  drawer:  DrawerCustom(),
                   appBar: buildAppBar(
                     backgroundColor: Colors.white,
                     centerTitle: true,
@@ -62,7 +63,7 @@ class Home extends StatelessWidget {
                               ),
                               GestureDetector(
                                 onTap: () {
-                                  Modular.to.pushNamed(Routes.foodCategory);
+                                  Modular.to.pushNamed(Routes.allCategoryView);
                                 },
                                 child: Text(
                                   'Ver Todos(32)',
@@ -73,75 +74,75 @@ class Home extends StatelessWidget {
                             ],
                           ),
                           SizedBox(height: 16),
-                          _buildCategoryTile(),
+                          Expanded(child: _buildCategoryTile(model, media)),
                           SizedBox(height: 16),
-
                         ]),
                   ),
                 )));
   }
 
-  Widget _buildCategoryTile() {
-    return Stack(
-      alignment: Alignment.center,
+  List colors = [
+    Colors.green,
+    Colors.yellow,
+    Colors.orange,
+    Colors.blue,
+    Colors.brown,
+  ];
+
+  Random random = new Random();
+
+  Widget _buildCategoryTile(HomeViewModel model, SizingInformation media) {
+    return GridView.count(
+      crossAxisCount: 3,
+      crossAxisSpacing: 8,
+      mainAxisSpacing: 8,
+      shrinkWrap: true,
       children: [
-        Container(
-          width: 100.0,
-          height: 100.0,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(22.0),
-            image: DecorationImage(
-              fit: BoxFit.cover,
-              image: AssetImage(
-                'assets/images/top_restorant.png',
+        ...model.categories.sublist(0, 6).map<Widget>((e) {
+          return Stack(
+            children: [
+              Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(22.0),
+                  image: DecorationImage(
+                    fit: BoxFit.cover,
+                    image: AssetImage(
+                      'assets/images/top_restorant.png',
+                    ),
+                  ),
+                ),
               ),
-            ),
-            gradient: LinearGradient(
-              begin: Alignment(0.0, -1.0),
-              end: Alignment(0.0, 1.0),
-              colors: [const Color(0xa62dcef8), const Color(0xa63b40fe)],
-              stops: [0.0, 1.0],
-            ),
-            boxShadow: [
-              BoxShadow(
-                color: const Color(0x08000000),
-                offset: Offset(0, 10),
-                blurRadius: 99,
+              Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(22.0),
+                  gradient: LinearGradient(
+                    begin: Alignment(0.0, -1.0),
+                    end: Alignment(0.0, 1.0),
+                    colors: [
+                      const Color(0xff3e3f68),
+                      const Color(0xff3e3f68),
+                      const Color(0xcc6e7faa),
+                    ],
+                    stops: [0.0, 0.176, 1.0],
+                  ),
+                ),
+              ),
+              Center(
+                child: Text(
+                  'Italiana',
+                  style: TextStyle(
+                    fontFamily: 'Josefin Sans',
+                    fontSize: 16,
+                    color: const Color(0xffffffff),
+                    fontWeight: FontWeight.w700,
+                    height: 0.66,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
               ),
             ],
-          ),
-        ),
-        Container(
-          width: 100.0,
-          height: 100.0,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(22.0),
-            gradient: LinearGradient(
-              begin: Alignment(0.0, -1.0),
-              end: Alignment(0.0, 1.0),
-              colors: [const Color(0xa62dcef8), const Color(0xa63b40fe)],
-              stops: [0.0, 1.0],
-            ),
-            boxShadow: [
-              BoxShadow(
-                color: const Color(0x08000000),
-                offset: Offset(0, 10),
-                blurRadius: 99,
-              ),
-            ],
-          ),
-        ),
-        Text(
-          'Italiana',
-          style: TextStyle(
-            fontFamily: 'Josefin Sans',
-            fontSize: 16,
-            color: const Color(0xffffffff),
-            fontWeight: FontWeight.w700,
-            height: 0.66,
-          ),
-          textAlign: TextAlign.center,
-        ),
+          );
+        })
       ],
     );
   }

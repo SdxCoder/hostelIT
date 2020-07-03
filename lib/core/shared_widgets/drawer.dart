@@ -67,19 +67,7 @@ class DrawerCustom extends StatelessWidget {
               });
             },
           ),
-          // ListTile(
-          //   leading: Icon(FontAwesomeIcons.table,
-          //       color: Theme.of(context).iconTheme.color),
-          //   title: Text(
-          //     'Manage Tables',
-          //     style: Theme.of(context).accentTextTheme.subtitle1,
-          //   ),
-          //   onTap: () {
-          //      Modular.to.pushNamed(Routes.manageQrcodes).then((value){
-          //       Modular.to.pop();
-          //     });
-          //   },
-          // ),
+        
           // ListTile(
           //   leading: Icon(FontAwesomeIcons.book,
           //       color: Theme.of(context).iconTheme.color),
@@ -164,7 +152,7 @@ class DrawerCustom extends StatelessWidget {
             ],
           )),
          // Spacer(),
-         
+         isUserLoggedIn ? 
           ListTile(
             leading: Icon(FontAwesomeIcons.signOutAlt,
                 color: Theme.of(context).iconTheme.color),
@@ -179,7 +167,20 @@ class DrawerCustom extends StatelessWidget {
                 Modular.to.pushNamedAndRemoveUntil('/',  ModalRoute.withName('/'));
               });
             },
-          ),
+          ) : 
+          ListTile(
+            leading: Icon(FontAwesomeIcons.signInAlt,
+                color: Theme.of(context).iconTheme.color),
+            title: Text(
+              'Register',
+              style: Theme.of(context).accentTextTheme.subtitle1,
+            ),
+            onTap: () {
+               Modular.to.pushNamedAndRemoveUntil('/',  ModalRoute.withName('/'));
+             
+            },
+          ) 
+          ,
         ],
       ),
     );

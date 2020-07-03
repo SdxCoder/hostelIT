@@ -1,5 +1,6 @@
 import 'package:client/core/core.dart';
 import 'package:client/modules/mod-admin/profile/views/profile_view.dart';
+import 'package:client/modules/mod-user/notifications/notifications_user_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
@@ -17,7 +18,7 @@ class _UserHomeState extends State<UserHome> {
   List<Widget> _tabs = [
     Home(),
     Text('fav'),
-    Text('notification'),
+    NotificationsUserView(),
     ProfileView()
   ];
   @override

@@ -21,5 +21,6 @@ class Routes{
  static const String food = "$userHome/food";
  static const String foodCategory = "$userHome/foodCategory";
  static const String cart = "$userHome/cart";
+ static const String allCategoryView = "$userHome/allCategoryView";
   
 }

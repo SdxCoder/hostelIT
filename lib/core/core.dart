@@ -50,6 +50,7 @@ export './shared_widgets/search_location_widget.dart';
 export './shared_widgets/drawer.dart';
 export './shared_widgets/popup_menu.dart';
 export './shared_widgets/counter.dart';
+export './shared_widgets/notifications_view.dart';
 
 // utils
 export './utils/colors.dart';

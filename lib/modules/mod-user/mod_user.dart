@@ -1,11 +1,12 @@
 
-import 'package:client/core/core.dart';
+
 import 'package:client/modules/mod-user/scan/views/scan_view.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 import 'cart/views/cart_view.dart';
 import 'foods/views/food_category_view.dart';
 import 'foods/views/food_view.dart';
+import 'home/category.dart';
 import 'home/user_home.dart';
 
 class UserModule extends ChildModule {
@@ -23,6 +24,7 @@ class UserModule extends ChildModule {
         Router('/food', child: (_, args) => FoodView()),
         Router('/foodCategory', child: (_, args) => FoodCategoryView()),
         Router('/cart', child: (_, args) => CartView()),
+        Router('/allCategoryView', child: (_, args) => AllCategoriesView()),
       ];
 
   static Inject get to => Inject<UserModule>.of();
